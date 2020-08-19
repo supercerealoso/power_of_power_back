@@ -4,7 +4,7 @@ const User = use('App/Models/User');
 const Env = use('Env');
 
 class AdminController {
-    async create() {
+    async create({ response }) {
         const user = await User.findOrCreate({
             username: Env.getOrFail('ADMIN_USER')
         }, {
@@ -12,7 +12,9 @@ class AdminController {
             password: Env.getOrFail('ADMIN_PASS'),
             email: Env.getOrFail('ADMIN_EMAIL')
         });
-        return !!user;
+        return response.json({
+            success: true
+        });
     }
 }
 
