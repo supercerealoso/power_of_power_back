@@ -9,7 +9,7 @@ class ComicController {
         } catch (e) {
             await session
                 .withErrors({ login: 'Login fail' });
-            return response.redirect('/');
+            return response.redirect('/comic/create');
         }
         const rules = {
             index: 'required|integer',
@@ -27,10 +27,10 @@ class ComicController {
         const validation = await validate(request.all(), rules);
         if (validation.fails()) {
             await session.withErrors(validation.messages()).flashAll();
-            return response.redirect('/');
+            return response.redirect('/comic/create');
         }
         await session.flashMessage('comic', 'Comic created');
-        return response.redirect('/');
+        return response.redirect('/comic/create');
     }
 }
 
