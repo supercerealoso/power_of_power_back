@@ -3,9 +3,7 @@
 @section('content')
 <p class="lead">Create a New Comic</p>
 @if(flashMessage('comic'))
-<div class="alert alert-success" role="alert">
-    {{ flashMessage('comic') }}
-</div>
+<p class="text-success">{{ flashMessage('comic') }}</p>
 @endif
 <form method="POST" action="/comic/create">
     {{ csrfField() }}
