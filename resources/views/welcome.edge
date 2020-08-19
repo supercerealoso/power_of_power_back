@@ -18,7 +18,7 @@
   </nav>
   <div class="container mt-3">
     @loggedIn
-    <p>Hello, {{ auth.user }}</p>
+    <p>Hello, {{ auth.user.username }}</p>
     @else
     <form method="POST" action="/login" class="form-inline">
       {{ csrfField() }}

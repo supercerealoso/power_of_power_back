@@ -20,3 +20,4 @@ Route.on('/').render('welcome');
 
 Route.get('/admin/create', 'AdminController.create');
 Route.post('/login', 'AdminController.login');
+Route.post('/logout', 'AdminController.logout');
