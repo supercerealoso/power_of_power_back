@@ -21,7 +21,7 @@
     <form method="POST" action="/logout" class="form-inline">
       {{ csrfField() }}
       <div class="form-group mb-2">
-        <label>Hello, {{ auth.user.username }}</label>
+        <label class="mr-2">Hello, {{ auth.user.username }}</label>
       </div>
       <button type="submit" class="btn btn-dark mb-2">Logout</button>
     </form>
@@ -38,6 +38,9 @@
       </div>
       <button type="submit" class="btn btn-dark mb-2">Login</button>
     </form>
+    @if(hasErrorFor('login'))
+    <p class="text-danger">{{ getErrorFor('login') }}</p>
+    @endif
     @endloggedIn
     <hr>
   </div>

@@ -22,7 +22,7 @@ class AdminController {
             await auth.attempt(email, password);
         } catch (e) {
             await session
-                .withErrors({ message: 'Login fail' })
+                .withErrors({ login: 'Login fail' })
                 .flashAll();
         }
         response.redirect('/');
