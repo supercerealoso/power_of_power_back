@@ -21,39 +21,29 @@
     <form method="POST" action="/admin/logout">
       {{ csrfField() }}
       <div class="row">
-        <div class="col col-lg-2">
+        <div class="col col-md-2">
           <label>Hello, {{ auth.user.username }}</label>
         </div>
-        <div class="col col-lg-1">
+        <div class="col col-md-1">
           <button type="submit" class="btn btn-dark">Logout</button>
         </div>
       </div>
     </form>
     @else
-    <form method="POST" action="/admin/login">
+    <form class="form-inline" method="POST" action="/admin/login">
       {{ csrfField() }}
-      <div class="row">
-        <div class="col col-lg-1">
-          <label>Email</label>
-        </div>
-        <div class="col col-lg-3">
-          <input type="text" class="form-control" name="email">
-        </div>
-        <div class="col col-lg-1">
-          <label>Password</label>
-        </div>
-        <div class="col col-lg-3">
-          <input type="password" class="form-control" name="password">
-        </div>
-        <div class="col col-lg-1">
-          <button type="submit" class="btn btn-dark">Login</button>
-        </div>
-        @if(hasErrorFor('login'))
-        <div class="col col-lg-2">
-          <p class="text-danger">{{ getErrorFor('login') }}</p>
-        </div>
-        @endif
+      <div class="form-group mb-2">
+        <input type="text" class="form-control" name="email" placeholder="email@example.com">
       </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <input type="password" class="form-control" name="password" placeholder="password">
+      </div>
+      <button type="submit" class="btn btn-dark mb-2">Login</button>
+      @if(hasErrorFor('login'))
+      <div class="form-group mx-sm-3 mb-2">
+        <p class="text-danger">{{ getErrorFor('login') }}</p>
+      </div>
+      @endif
     </form>
     @endloggedIn
     <hr>
