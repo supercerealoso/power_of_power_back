@@ -80,21 +80,21 @@
             Comment
             {{ elIf('<span class="text-danger">$self</span>', getErrorFor('comment'), hasErrorFor('comment')) }}
         </label>
-        <textarea class="form-control" name="comment" rows="3" value="{{ old('comment', '') }}"></textarea>
+        <textarea class="form-control" name="comment" rows="3">{{ old('comment', '') }}</textarea>
     </div>
     <div class="form-group">
         <label>
             Transcript
             {{ elIf('<span class="text-danger">$self</span>', getErrorFor('transcript'), hasErrorFor('transcript')) }}
         </label>
-        <textarea class="form-control" name="transcript" rows="3" value="{{ old('transcript', '') }}"></textarea>
+        <textarea class="form-control" name="transcript" rows="3">{{ old('transcript', '') }}</textarea>
     </div>
     <div class="form-group">
         <label>
             Special
             {{ elIf('<span class="text-danger">$self</span>', getErrorFor('special'), hasErrorFor('special')) }}
         </label>
-        <textarea class="form-control" name="special" rows="3" value="{{ old('special', '') }}"></textarea>
+        <textarea class="form-control" name="special" rows="3">{{ old('special', '') }}</textarea>
     </div>
     <button type="submit" class="btn btn-dark mb-2">Create</button>
 </form>
