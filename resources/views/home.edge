@@ -24,7 +24,7 @@
         <div class="col col-lg-2">
           <label>Hello, {{ auth.user.username }}</label>
         </div>
-        <div class="col col-lg-2">
+        <div class="col col-lg-1">
           <button type="submit" class="btn btn-dark">Logout</button>
         </div>
       </div>
@@ -33,19 +33,19 @@
     <form method="POST" action="/admin/login">
       {{ csrfField() }}
       <div class="row">
-        <div class="col col-lg-2">
+        <div class="col col-lg-1">
           <label>Email</label>
         </div>
-        <div class="col col-lg-2">
+        <div class="col col-lg-3">
           <input type="text" class="form-control" name="email">
         </div>
-        <div class="col col-lg-2">
+        <div class="col col-lg-1">
           <label>Password</label>
         </div>
-        <div class="col col-lg-2">
+        <div class="col col-lg-3">
           <input type="password" class="form-control" name="password">
         </div>
-        <div class="col col-lg-2">
+        <div class="col col-lg-1">
           <button type="submit" class="btn btn-dark">Login</button>
         </div>
         @if(hasErrorFor('login'))
