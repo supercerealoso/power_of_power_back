@@ -16,8 +16,8 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.on('/').render('welcome');
+Route.on('/').render('home');
 
 Route.get('/admin/create', 'AdminController.create');
-Route.post('/login', 'AdminController.login');
-Route.post('/logout', 'AdminController.logout');
+Route.post('/admin/login', 'AdminController.login');
+Route.post('/admin/logout', 'AdminController.logout');
