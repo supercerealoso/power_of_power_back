@@ -27,6 +27,10 @@ class AdminController {
         }
         response.redirect('/');
     }
+    async logout({ auth, response }) {
+        await auth.logout();
+        response.redirect('/');
+    }
 }
 
 module.exports = AdminController;

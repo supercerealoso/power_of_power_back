@@ -18,7 +18,13 @@
   </nav>
   <div class="container mt-3">
     @loggedIn
-    <p>Hello, {{ auth.user.username }}</p>
+    <form method="POST" action="/logout" class="form-inline">
+      {{ csrfField() }}
+      <div class="form-group mb-2">
+        <label>Hello, {{ auth.user.username }}</label>
+      </div>
+      <button type="submit" class="btn btn-dark mb-2">Logout</button>
+    </form>
     @else
     <form method="POST" action="/login" class="form-inline">
       {{ csrfField() }}
@@ -30,7 +36,7 @@
         <label class="mr-2">Password</label>
         <input type="password" class="form-control" name="password">
       </div>
-      <button type="submit" class="btn btn-primary mb-2">Login</button>
+      <button type="submit" class="btn btn-dark mb-2">Login</button>
     </form>
     @endloggedIn
     <hr>
