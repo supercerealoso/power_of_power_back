@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Power of Power Management</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/v61fiXc.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Power of Power Management</a>
+        </div>
+    </nav>
+    <div class="container">
+        @loggedIn
+        <form class="form-inline" method="POST" action="/admin/logout">
+            {{ csrfField() }}
+            <div class="form-group mr-3 mb-2">
+                <label>Hello, {{ auth.user.username }}</label>
+            </div>
+            <button type="submit" class="btn btn-dark mb-2">Logout</button>
+        </form>
+        @else
+        <form class="form-inline" method="POST" action="/admin/login">
+            {{ csrfField() }}
+            <div class="form-group mb-2">
+                <input type="text" class="form-control" name="email" placeholder="email@example.com">
+            </div>
+            <div class="form-group mx-3 mb-2">
+                <input type="password" class="form-control" name="password" placeholder="password">
+            </div>
+            <button type="submit" class="btn btn-dark mb-2">Login</button>
+            @if(hasErrorFor('login'))
+            <div class="form-group mx-3 mb-2">
+                <div class="alert alert-danger" role="alert">
+                    {{ getErrorFor('login') }}
+                </div>
+            </div>
+            @endif
+        </form>
+        @endloggedIn
+        <hr>
+        @!section('content')
+    </div>
+</body>
+
+</html>

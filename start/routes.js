@@ -22,4 +22,5 @@ Route.get('/admin/create', 'AdminController.create');
 Route.post('/admin/login', 'AdminController.login');
 Route.post('/admin/logout', 'AdminController.logout');
 
+Route.on('/comic/create').render('comic.create');
 Route.post('/comic/create', 'ComicController.create');
