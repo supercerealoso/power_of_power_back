@@ -16,6 +16,17 @@ class AdminController {
             success: true
         });
     }
+    async login({ request, response, auth, session }) {
+        const { email, password } = request.all();
+        try {
+            await auth.attempt(email, password);
+        } catch (e) {
+            await session
+                .withErrors({ message: 'Login fail' })
+                .flashAll();
+        }
+        response.redirect('/');
+    }
 }
 
 module.exports = AdminController;

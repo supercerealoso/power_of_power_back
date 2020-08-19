@@ -19,3 +19,4 @@ const Route = use('Route');
 Route.on('/').render('welcome');
 
 Route.get('/admin/create', 'AdminController.create');
+Route.post('/login', 'AdminController.login');
