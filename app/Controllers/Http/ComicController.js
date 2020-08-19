@@ -3,7 +3,7 @@
 const { validate } = use('Validator')
 
 class ComicController {
-    async create({ request, response, auth }) {
+    async create({ request, response, auth, session }) {
         try {
             await auth.check();
         } catch (e) {
