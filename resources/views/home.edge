@@ -53,52 +53,67 @@
     </div>
     @endif
     <form method="POST" action="/comic/create">
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('top'), hasErrorFor('top')) }}
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="top">
+        <input class="form-check-input" type="checkbox" name="top" value="{{ old('top', '') }}">
         <label class="form-check-label" for="defaultCheck1">
           Top
         </label>
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('index'), hasErrorFor('index')) }}
       <div class="form-group">
         <label>Index</label>
-        <input type="text" class="form-control" name="index" placeholder="0">
+        <input type="text" class="form-control" name="index" placeholder="0" value="{{ old('index', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('image'), hasErrorFor('image')) }}
       <div class="form-group">
         <label>Image</label>
-        <input type="text" class="form-control" name="image" placeholder="https://imgur...">
+        <input type="text" class="form-control" name="image" placeholder="https://imgur..."
+          value="{{ old('image', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('alt'), hasErrorFor('alt')) }}
       <div class="form-group">
         <label>Alt</label>
-        <input type="text" class="form-control" name="alt" placeholder="Message">
+        <input type="text" class="form-control" name="alt" placeholder="Message" value="{{ old('alt', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('thumb), hasErrorFor('thumb')) }}
       <div class="form-group">
         <label>Thumb</label>
-        <input type="text" class="form-control" name="thumb" placeholder="https://imgur...">
+        <input type="text" class="form-control" name="thumb" placeholder="https://imgur..."
+          value="{{ old('thumb', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
       <div class="form-group">
         <label>Title</label>
-        <input type="text" class="form-control" name="title" placeholder="Title">
+        <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('keywords'), hasErrorFor('keywords')) }}
       <div class="form-group">
         <label>Keywords</label>
-        <input type="text" class="form-control" name="keywords" placeholder="key, words">
+        <input type="text" class="form-control" name="keywords" placeholder="key, words"
+          value="{{ old('keywords', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('posted'), hasErrorFor('posted')) }}
       <div class="form-group">
         <label>Posted</label>
-        <input type="date" class="form-control" name="posted" placeholder="00/00/0000">
+        <input type="date" class="form-control" name="posted" placeholder="00/00/0000" value="{{ old('posted', '') }}">
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('comment'), hasErrorFor('comment')) }}
       <div class="form-group">
         <label>Comment</label>
-        <textarea class="form-control" name="comment" rows="3"></textarea>
+        <textarea class="form-control" name="comment" rows="3" value="{{ old('comment', '') }}"></textarea>
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('transcript'), hasErrorFor('transcript')) }}
       <div class="form-group">
         <label>Transcript</label>
-        <textarea class="form-control" name="transcript" rows="3"></textarea>
+        <textarea class="form-control" name="transcript" rows="3" value="{{ old('transcript', '') }}"></textarea>
       </div>
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('special'), hasErrorFor('special')) }}
       <div class="form-group">
         <label>Special</label>
-        <textarea class="form-control" name="special" rows="3"></textarea>
+        <textarea class="form-control" name="special" rows="3" value="{{ old('special', '') }}"></textarea>
       </div>
+      <button type="submit" class="btn btn-dark mb-2">Create</button>
     </form>
     @endloggedIn
     <span class="lead">Comic List</span>
