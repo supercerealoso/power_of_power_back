@@ -15,12 +15,8 @@
         <tr>
             <th scope="row">{{ comic.index }}</th>
             <td>
-                <a href="https://powerofpower.netlify.app/comics/{{ comic.index }}">
-                    {{ comic.title }}
-                </a>
-                <a class="btn btn-sm btn-dark" href="/comic/edit/{{ comic.index }}" role="button">
-                    Edit
-                </a>
+                <a href="https://powerofpower.netlify.app/comics/{{ comic.index }}">{{ comic.title }}</a>
+                <a class="btn btn-sm btn-dark" href="/comic/edit/{{ comic.index }}" role="button">Edit</a>
                 <form class="d-inline" method="POST" action="/comic/publish">
                     {{ csrfField() }}
                     <input type="hidden" name="index" value="{{ comic.index }}">
