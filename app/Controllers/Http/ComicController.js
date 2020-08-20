@@ -77,7 +77,7 @@ class ComicController {
         await mongo.close();
         return view.render('comic.list', { comics: comics });
     }
-    async show({ view, request }) {
+    async show({ view, request, response }) {
         // get comic
         const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
             useNewUrlParser: true
