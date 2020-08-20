@@ -3,12 +3,14 @@
 const fs = use('fs').promises;
 const { validate } = use('Validator');
 const Env = use('Env');
+const View = use('View');
 const MongoClient = use('mongodb').MongoClient;
 const { Octokit } = use("@octokit/rest");
 const minify = use('@node-minify/core');
 const babelMinify = require('@node-minify/babel-minify');
 const cleanCSS = use('@node-minify/clean-css');
 const htmlMinifier = use('@node-minify/html-minifier');
+
 const octokit = new Octokit({
     auth: Env.get('GITHUB_TOKEN', '')
 });
