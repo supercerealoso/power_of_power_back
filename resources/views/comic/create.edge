@@ -11,14 +11,14 @@
         <div class="form-group col">
             <label>
                 Index
-                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('index'), hasErrorFor('index')) }}
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('index'), hasErrorFor('index')) }}
             </label>
             <input type="text" class="form-control" name="index" placeholder="0" value="{{ old('index', '') }}">
         </div>
         <div class="form-group col">
             <label>
                 Posted
-                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('posted'), hasErrorFor('posted')) }}
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('posted'), hasErrorFor('posted')) }}
             </label>
             <input type="date" class="form-control" name="posted" placeholder="00/00/0000"
                 value="{{ old('posted', '') }}">
@@ -32,15 +32,16 @@
                 @endif
                 <label class="form-check-label">
                     Top
-                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('top'), hasErrorFor('top')) }}
+                    {{ elIf('<small class="text-danger">$self</small>', getErrorFor('top'), hasErrorFor('top')) }}
                 </label>
+                <small>Check if this comic is one of the most popular</small>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label>
             Title
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('title'), hasErrorFor('title')) }}
         </label>
         <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title', '') }}">
     </div>
@@ -48,7 +49,7 @@
         <div class="form-group col">
             <label>
                 Image
-                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('image'), hasErrorFor('image')) }}
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('image'), hasErrorFor('image')) }}
             </label>
             <input type="text" class="form-control" name="image" placeholder="https://imgur..."
                 value="{{ old('image', '') }}">
@@ -56,7 +57,7 @@
         <div class="form-group col">
             <label>
                 Thumb
-                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('thumb'), hasErrorFor('thumb')) }}
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('thumb'), hasErrorFor('thumb')) }}
             </label>
             <input type="text" class="form-control" name="thumb" placeholder="https://imgur..."
                 value="{{ old('thumb', '') }}">
@@ -66,14 +67,14 @@
         <div class="form-group col">
             <label>
                 Alt
-                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('alt'), hasErrorFor('alt')) }}
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('alt'), hasErrorFor('alt')) }}
             </label>
             <input type="text" class="form-control" name="alt" placeholder="Message" value="{{ old('alt', '') }}">
         </div>
         <div class="form-group col">
             <label>
                 Keywords
-                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('keywords'), hasErrorFor('keywords')) }}
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('keywords'), hasErrorFor('keywords')) }}
             </label>
             <input type="text" class="form-control" name="keywords" placeholder="key, words"
                 value="{{ old('keywords', '') }}">
@@ -82,21 +83,21 @@
     <div class="form-group">
         <label>
             Comment
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('comment'), hasErrorFor('comment')) }}
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('comment'), hasErrorFor('comment')) }}
         </label>
         <textarea class="form-control" name="comment" rows="3">{{ old('comment', '') }}</textarea>
     </div>
     <div class="form-group">
         <label>
             Transcript
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('transcript'), hasErrorFor('transcript')) }}
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('transcript'), hasErrorFor('transcript')) }}
         </label>
         <textarea class="form-control" name="transcript" rows="3">{{ old('transcript', '') }}</textarea>
     </div>
     <div class="form-group">
         <label>
             Special
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('special'), hasErrorFor('special')) }}
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('special'), hasErrorFor('special')) }}
         </label>
         <textarea class="form-control" name="special" rows="3">{{ old('special', '') }}</textarea>
     </div>
