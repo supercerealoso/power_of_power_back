@@ -186,7 +186,7 @@ class ComicController {
             if (!comic.special) {
                 comic.special = '';
             }
-            const name = 'comics/' + comic.index + '/index.html'
+            const name = 'comics/' + comic.index + '.html'
             const txt = view.render('comic.layout', { comic: comic });
             await fs.writeFile('_temp', txt, 'utf8');
             const min = await minify({
