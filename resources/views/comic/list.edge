@@ -15,7 +15,9 @@
         <tr>
             <th scope="row">{{ comic.index }}</th>
             <td>
-                {{ comic.title }}
+                <a href="https://powerofpower.netlify.app/comics/{{ comic.index }}">
+                    {{ comic.title }}
+                </a>
                 <a class="btn btn-sm btn-dark" href="/comic/edit/{{ comic.index }}" role="button">
                     Edit
                 </a>
