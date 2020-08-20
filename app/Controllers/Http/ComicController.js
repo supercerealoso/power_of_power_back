@@ -1,8 +1,17 @@
 'use strict';
 
+const fs = use('fs').promises;
 const { validate } = use('Validator');
 const Env = use('Env');
 const MongoClient = use('mongodb').MongoClient;
+const { Octokit } = use("@octokit/rest");
+const minify = use('@node-minify/core');
+const babelMinify = require('@node-minify/babel-minify');
+const cleanCSS = use('@node-minify/clean-css');
+const htmlMinifier = use('@node-minify/html-minifier');
+const octokit = new Octokit({
+    auth: Env.get('GITHUB_TOKEN', '')
+});
 
 class ComicController {
     async create({ request, response, auth, session }) {
@@ -147,6 +156,62 @@ class ComicController {
         });
         await mongo.close();
         await session.flash({ comic: 'Comic edited' });
+        return response.redirect('back');
+    }
+    async publish({ request, response, auth, session, view }) {
+        try {
+            await auth.check();
+        } catch (e) {
+            await session.withErrors({ login: 'Login fail' });
+            return response.redirect('back');
+        }
+        // get comic
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('comics');
+        const comic = await collection.find({
+            index: +request.input('index')
+        }).next();
+        await mongo.close();
+        // render comic
+        if (comic) {
+            comic.posted = new Date(comic.posted).toISOString().split("T")[0];
+            if (!comic.special) {
+                comic.special = '';
+            }
+            const name = 'comics/' + comic.index + '/index.html'
+            const txt = view.render('comic.layout', { comic: comic });
+            await fs.writeFile('_temp', txt, 'utf8');
+            const min = await minify({
+                compressor: htmlMinifier,
+                input: '_temp',
+                output: '_temp'
+            });
+            const buff = new Buffer(min);
+            // check if update is possible
+            var file;
+            try {
+                file = octokit.repos.getContent({
+                    owner: 'supercerealoso',
+                    repo: 'power_of_power_front',
+                    path: name
+                });
+            } catch (e) {
+                file = {
+                    sha: null
+                };
+            }
+            octokit.repos.createOrUpdateFileContents({
+                owner: 'supercerealoso',
+                repo: 'power_of_power_front',
+                path: name,
+                message: 'automated',
+                content: buff.toString('base64'),
+                sha: file.sha
+            });
+        }
         return response.redirect('back');
     }
 }
