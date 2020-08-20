@@ -19,6 +19,7 @@ class ComicController {
             title: 'required|string',
             comment: 'required|string',
             special: 'string',
+            top: 'boolean',
             posted: 'required|date',
             keywords: 'required|string',
             transcript: 'required|string'
