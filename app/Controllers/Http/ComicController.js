@@ -77,6 +77,23 @@ class ComicController {
         await mongo.close();
         return view.render('comic.list', { comics: comics });
     }
+    async show({ view, request }) {
+        // get comic
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('comics');
+        const comic = await collection.find({
+            index: +request.input('index')
+        }).next();
+        await mongo.close();
+        if (comic) {
+            return view.render('comic.edit', { comic: comics });
+        } else {
+            return response.redirect('/comic/list');
+        }
+    }
 }
 
 module.exports = ComicController;
