@@ -4,7 +4,7 @@
 <p class="lead">List Comics</p>
 <table class="table table-bordered">
     <thead>
-        <tr>
+        <tr class="d-flex">
             <th scope="col-1">Index</th>
             <th scope="col-7">Title</th>
             <th scope="col-2">Top</th>
@@ -14,7 +14,7 @@
     </thead>
     <tbody>
         @each(comic in comics)
-        <tr>
+        <tr class="d-flex">
             <th scope="row">{{ comic.index }}</th>
             <td>{{ comic.title }}</td>
             <td>{{ comic.top }}</td>
