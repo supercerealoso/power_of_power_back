@@ -4,11 +4,11 @@
     <h1>{{ comic.title }}</h1>
     <img src="{{ comic.image }}" alt="{{ comic.alt }}">
     <img src="{{ comic.thumb }}" alt="thumb">
-    {{ raw(comic.comment) }}
+    <div>{{ raw(comic.comment) }}</div>
     <p>Posted: {{ comic.posted }}</p>
     <p>Keywords: {{ comic.keywords }}</p>
     <p>Transcript: {{ comic.transcript }}</p>
-    {{ raw(comic.special) }}
+    <div>{{ raw(comic.special) }}</div>
 </body>
 
 </html>

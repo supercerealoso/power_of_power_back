@@ -49,8 +49,8 @@ class ComicController {
         const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
             useNewUrlParser: true
         });
-        await mongo.connect();
-        const collection = mongo.db('powerofpower').collection('comics');
+        const db = await mongo.connect();
+        const collection = db.collection('comics');
         const comic = await collection.find({
             index: +request.input('index')
         }).next();
