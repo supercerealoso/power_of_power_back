@@ -53,7 +53,7 @@ class ComicController {
             thumb: request.input('thumb'),
             title: request.input('title').trim(),
             comment: request.input('comment').trim(),
-            special: request.input('special').trim(),
+            special: request.input('special'),
             top: !!request.input('top'),
             posted: Date.parse(request.input('posted')),
             keywords: request.input('keywords').trim(),
