@@ -89,6 +89,10 @@ class ComicController {
         }).next();
         await mongo.close();
         if (comic) {
+            comic.posted = new Date(comic.posted);
+            if (!comic.special) {
+                comic.special = '';
+            }
             return view.render('comic.edit', { comic: comic });
         } else {
             return response.redirect('/comic/list');
