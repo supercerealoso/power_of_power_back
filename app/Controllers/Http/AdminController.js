@@ -25,14 +25,14 @@ class AdminController {
                 .withErrors({ login: 'Login fail' })
                 .flashAll();
         }
-        return response.redirect('/');
+        return response.redirect('back');
     }
     async logout({ auth, response }) {
         try {
             await auth.logout();
         } catch (e) {
         }
-        return response.redirect('/');
+        return response.redirect('back');
     }
 }
 

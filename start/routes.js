@@ -26,3 +26,4 @@ Route.on('/comic/create').render('comic.create');
 Route.post('/comic/create', 'ComicController.create');
 Route.get('/comic/list', 'ComicController.list');
 Route.get('/comic/edit/:index', 'ComicController.show');
+Route.post('/comic/edit', 'ComicController.edit');
