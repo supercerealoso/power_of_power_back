@@ -190,7 +190,7 @@ class ComicController {
             });
             const buff = new Buffer(min);
             // check if update is possible
-            const file = octokit.repos.createOrUpdateFileContents({
+            const file = await octokit.repos.createOrUpdateFileContents({
                 owner: 'supercerealoso',
                 repo: 'power_of_power_front',
                 path: name,
