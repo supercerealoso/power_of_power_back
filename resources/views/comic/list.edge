@@ -20,6 +20,7 @@
                     Edit
                 </a>
                 <form class="d-inline" method="POST" action="/comic/publish">
+                    {{ csrfField() }}
                     <input type="hidden" name="index" value="{{ comic.index }}">
                     <button type="submit" class="btn btn-sm btn-dark">Publish</button>
                 </form>
