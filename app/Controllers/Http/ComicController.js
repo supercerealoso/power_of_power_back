@@ -77,7 +77,7 @@ class ComicController {
         await mongo.close();
         return view.render('comic.list', { comics: comics });
     }
-    async show({ view, request, response }) {
+    async show({ view, params, response }) {
         // get comic
         const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
             useNewUrlParser: true
@@ -85,7 +85,7 @@ class ComicController {
         await mongo.connect();
         const collection = mongo.db('powerofpower').collection('comics');
         const comic = await collection.find({
-            index: +request.input('index')
+            index: +params.index
         }).next();
         await mongo.close();
         if (comic) {
