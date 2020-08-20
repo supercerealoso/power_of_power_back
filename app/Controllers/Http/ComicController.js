@@ -203,7 +203,7 @@ class ComicController {
                 index: +request.input('index')
             }, {
                 $set: {
-                    sha: file.sha
+                    sha: file.data.content.sha
                 }
             });
         }
