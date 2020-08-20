@@ -13,6 +13,10 @@ const octokit = new Octokit({
     auth: Env.get('GITHUB_TOKEN', '')
 });
 
+View.global('raw', function (html) {
+    return this.safe(html);
+});
+
 class ComicController {
     async create({ request, response, auth, session }) {
         try {
