@@ -212,7 +212,7 @@ class ComicController {
                 sha: file.sha
             });
         }
-        return response.redirect('back');
+        //return response.redirect('back');
     }
 }
 
