@@ -73,7 +73,7 @@ class ComicController {
             index: 1,
             title: 1,
             top: 1
-        });
+        }).toArray();
         await mongo.close();
         return view.render('comic.list', { comics: comics });
     }
