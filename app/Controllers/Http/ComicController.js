@@ -4,10 +4,6 @@ const { validate } = use('Validator');
 const Env = use('Env');
 const MongoClient = use('mongodb').MongoClient;
 
-const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
-    useNewUrlParser: true
-});
-
 class ComicController {
     async create({ request, response, auth, session }) {
         try {
@@ -35,6 +31,9 @@ class ComicController {
             return response.redirect('/comic/create');
         }
         // check if comic exists
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
         await mongo.connect();
         const collection = mongo.db('powerofpower').collection('comics');
         const comic = await collection.find({
