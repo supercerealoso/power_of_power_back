@@ -89,7 +89,7 @@ class ComicController {
         }).next();
         await mongo.close();
         if (comic) {
-            return view.render('comic.edit', { comic: comics });
+            return view.render('comic.edit', { comic: comic });
         } else {
             return response.redirect('/comic/list');
         }
