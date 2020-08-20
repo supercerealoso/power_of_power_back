@@ -192,7 +192,11 @@ class ComicController {
             const min = await minify({
                 compressor: htmlMinifier,
                 input: '_temp',
-                output: '_temp'
+                output: '_temp',
+                options: {
+                    decodeEntities: true,
+                    collapseInlineTagWhitespace: false
+                }
             });
             const buff = new Buffer(min);
             // check if update is possible
