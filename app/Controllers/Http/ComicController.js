@@ -89,7 +89,7 @@ class ComicController {
         }).next();
         await mongo.close();
         if (comic) {
-            comic.posted = new Date(comic.posted);
+            comic.posted = new Date(comic.posted).toISOString();
             if (!comic.special) {
                 comic.special = '';
             }
