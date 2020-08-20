@@ -1,4 +1,40 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Power of Power - {{ comic.title }}</title>
+
+    <link rel="shortcut icon" href="https://i.imgur.com/trQJtzG.png">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://feeds.feedburner.com/powerofpower">
+
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="msvalidate.01" content="64791B2843C37E5B4A08D38FB20261E1">
+    <meta name="google-site-verification" content="QIcSwGa6HiIdNgkGgM-9KC9f6srJtiAQPeN8aIjV2Hw">
+
+    <meta name="keywords" content="supercerealoso, powerofpower, webcomic, {{ comic.keywords }}">
+    <meta name="description"
+        content="{{ comic.title }} - There is not enough statistical evidence to reject that this comic is cool. Keywords: {{ comic.keywords }}">
+
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@pwrofpwr">
+    <meta name="twitter:creator" content="@pwrofpwr">
+    <meta name="twitter:title" content="Power of Power - {{ comic.title }}">
+    <meta name="twitter:image:src" content="{{ comic.image }}">
+    <meta name="twitter:domain" content="https://powerofpower.net">
+
+    <meta property="fb:app_id" content="1973805279585727">
+    <meta property="og:image" content="{{ comic.image }}">
+    <meta property="og:title" content="Power of Power - {{ comic.title }}">
+    <meta property="og:url" content="https://powerofpower.net/comics/{{ comic.index }}">
+    <meta property="og:site_name" content="Power of Power">
+    <meta property="og:type" content="profile">
+    <meta property="og:description"
+        content="There is not enough statistical evidence to reject that this comic is cool.">
+</head>
 
 <body>
     <h1>{{ comic.title }}</h1>
