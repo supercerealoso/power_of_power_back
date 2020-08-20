@@ -174,7 +174,6 @@ class ComicController {
         const comic = await collection.find({
             index: +request.input('index')
         }).next();
-        await mongo.close();
         // render comic
         if (comic) {
             comic.posted = new Date(comic.posted).toISOString().split("T")[0];
@@ -191,28 +190,25 @@ class ComicController {
             });
             const buff = new Buffer(min);
             // check if update is possible
-            var file;
-            try {
-                file = octokit.repos.getContent({
-                    owner: 'supercerealoso',
-                    repo: 'power_of_power_front',
-                    path: name
-                });
-            } catch (e) {
-                file = {
-                    sha: null
-                };
-            }
-            octokit.repos.createOrUpdateFileContents({
+            const file = octokit.repos.createOrUpdateFileContents({
                 owner: 'supercerealoso',
                 repo: 'power_of_power_front',
                 path: name,
                 message: 'automated',
                 content: buff.toString('base64'),
-                sha: file.sha
+                sha: comic.sha
+            });
+            // update sha
+            await collection.updateOne({
+                index: +request.input('index')
+            }, {
+                $set: {
+                    sha: file.sha
+                }
             });
         }
-        //return response.redirect('back');
+        await mongo.close();
+        return response.redirect('back');
     }
 }
 
