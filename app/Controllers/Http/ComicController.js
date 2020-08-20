@@ -182,7 +182,8 @@ class ComicController {
         }).next();
         // render comic
         if (comic) {
-            comic.posted = new Date(comic.posted).toISOString().split("T")[0];
+            comic.posted = new Date(comic.posted).toDateString();
+            comic.transcript = comic.transcript.replace('\n', '<br>');
             if (!comic.special) {
                 comic.special = '';
             }
