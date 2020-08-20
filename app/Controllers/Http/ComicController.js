@@ -29,7 +29,7 @@ class ComicController {
             await session.withErrors(validation.messages()).flashAll();
             return response.redirect('/comic/create');
         }
-        await session.flashMessage('comic', 'Comic created');
+        await session.flash({ comic: 'Comic created' });
         return response.redirect('/comic/create');
     }
 }
