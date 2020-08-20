@@ -5,6 +5,9 @@
 @if(flashMessage('comic'))
 <p class="text-success">{{ flashMessage('comic') }}</p>
 @endif
+@if(hasErrorFor('comic'))
+<span class="text-danger">{{ getErrorFor('comic') }}</span>
+@endif
 <form method="POST" action="/comic/create">
     {{ csrfField() }}
     <div class="row">
@@ -34,7 +37,7 @@
                     Top
                     {{ elIf('<small class="text-danger">$self</small>', getErrorFor('top'), hasErrorFor('top')) }}
                 </label>
-                <small>Check if this comic is one of the most popular</small>
+                <p><small>Check if this comic is one of the most popular</small></p>
             </div>
         </div>
     </div>
