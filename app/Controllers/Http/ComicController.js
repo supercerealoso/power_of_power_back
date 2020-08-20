@@ -38,7 +38,7 @@ class ComicController {
         await mongo.connect();
         const collection = mongo.db('powerofpower').collection('comics');
         const comic = await collection.find({
-            index: request.input('index')
+            index: +request.input('index')
         }).next();
         if (comic) {
             await mongo.close();
@@ -46,7 +46,19 @@ class ComicController {
             return response.redirect('/comic/create');
         }
         // insert
-        await collection.insertOne(request.all());
+        await collection.insertOne({
+            index: +request.input('index'),
+            image: request.input('image'),
+            alt: request.input('alt').trim(),
+            thumb: request.input('thumb'),
+            title: request.input('title').trim(),
+            comment: request.input('comment').trim(),
+            special: request.input('special').trim(),
+            top: !!request.input('top'),
+            posted: Date.parse(request.input('posted')),
+            keywords: request.input('keywords').trim(),
+            transcript: request.input('transcript').trim()
+        });
         await mongo.close();
         await session.flash({ comic: 'Comic created' });
         return response.redirect('/comic/create');
