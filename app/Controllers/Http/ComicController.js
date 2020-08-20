@@ -62,6 +62,21 @@ class ComicController {
         await session.flash({ comic: 'Comic created' });
         return response.redirect('/comic/create');
     }
+    async list({ view }) {
+        // get comics
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('comics');
+        const comics = await collection.find({}, {
+            index: 1,
+            title: 1,
+            top: 1
+        });
+        await mongo.close();
+        return view.render('comic.list', { comics: comics });
+    }
 }
 
 module.exports = ComicController;
