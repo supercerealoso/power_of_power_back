@@ -42,10 +42,6 @@
         .navbar-dark {
             background-color: #074c97 !important;
         }
-
-        .navbar-brand img {
-            height: 30px;
-        }
     </style>
 </head>
 
@@ -53,7 +49,7 @@
     <h1 class="d-none">Power of Power - {{ comic.title }} - {{ comic.keywords }}</h1>
     <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="/img/powerofpowerbrand.svg" alt="Power of Power"></a>
+            <a class="navbar-brand" href="/"><img src="https://i.imgur.com/6LyZtmJ.png" alt="Power of Power"></a>
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/archive">Archive</a>
                 <a class="nav-item nav-link" href="/blog">Blog</a>
@@ -78,6 +74,13 @@
                 <a class="nav-item nav-link" href="/comics/2">Last▶️▶️</a>
             </div>
         </nav>
+        <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/ukzZMCv.png"
+                alt="Facebook" /></a>
+        <a itemprop="sameAs" href="https://twitter.com/PwrOfPwr"><img src="https://i.imgur.com/ii7BpIN.png"
+                alt="Twitter" /></a>
+        <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
+                src="https://i.imgur.com/uj2GPh8.png" alt="Reddit" /></a>
+        <hr>
         <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
         <div class="card-text">{{ raw(comic.comment) }}</div>
@@ -87,8 +90,6 @@
         <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
     </div>
     <!--
-    Reddit: https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all
-    Usar https://schema.org/sameAs para indicar las redes sociales
     Agregar instagram
     Sitemap y Robots
     Que haya links a otros sitios
