@@ -60,24 +60,30 @@
             </div>
         </div>
     </nav>
-    <div class="container text-center">
-        @if(comic.special)
-        <div>{{ raw(comic.special) }}</div>
-        @else
-        <p><a href="/"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
-                    title="{{ comic.alt }}"></a></p>
-        @endif
-        <div class="card text-left">
-            <div class="card-body">
-                <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
-                <div class="card-text">{{ raw(comic.comment) }}</div>
-                <small class="card-text">Posted: {{ comic.posted.toDateString() }}</small>
-                <small class="card-text">Keywords: {{ comic.keywords }}</small>
-                <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
+    <div class="container">
+        <div class="row">
+            <div class="col-6-sm">
+                @if(comic.special)
+                <div>{{ raw(comic.special) }}</div>
+                @else
+                <p><a href="/"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
+                            title="{{ comic.alt }}"></a></p>
+                @endif
+            </div>
+            <div class="col-sm">
+                <div class="card text-left">
+                    <div class="card-body">
+                        <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
+                        <div class="card-text">{{ raw(comic.comment) }}</div>
+                        <small class="card-text">Posted: {{ comic.posted.toDateString() }}</small>
+                        <small class="card-text">Keywords: {{ comic.keywords }}</small>
+                        <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
+                    </div>
+                </div>
+                <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
             </div>
         </div>
-        <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
     </div>
     <!--
     Reddit: https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all
