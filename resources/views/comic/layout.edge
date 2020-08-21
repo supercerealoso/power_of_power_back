@@ -60,7 +60,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="The Empire’s New Weapon">
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
@@ -68,14 +68,12 @@
                     title="{{ comic.alt }}"></a></p>
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-2">
-            <div class="container">
-                <div class="navbar-nav justify-content-center">
-                    <a class="nav-item nav-link" href="/comics/1">First</a>
-                    <a class="nav-item nav-link" href="/comics/1">Prev</a>
-                    <a class="nav-item nav-link" href="/comics/2">Random</a>
-                    <a class="nav-item nav-link" href="/comics/2">Next</a>
-                    <a class="nav-item nav-link" href="/comics/2">Last</a>
-                </div>
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link" href="/comics/1">First</a>
+                <a class="nav-item nav-link" href="/comics/1">Prev</a>
+                <a class="nav-item nav-link" href="/comics/2">Random</a>
+                <a class="nav-item nav-link" href="/comics/2">Next</a>
+                <a class="nav-item nav-link" href="/comics/2">Last</a>
             </div>
         </nav>
         <div class="card text-left">
