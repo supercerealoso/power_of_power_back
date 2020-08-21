@@ -37,6 +37,12 @@
     <meta property="og:type" content="profile">
     <meta property="og:description"
         content="There is not enough statistical evidence to reject that this comic is cool.">
+
+    <style>
+        .navbar-dark {
+            background-color: #074c97 !important;
+        }
+    </style>
 </head>
 
 <body itemscope itemtype="http://schema.org/ComicStory">
@@ -59,9 +65,10 @@
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
-        <img itemprop="image" src="{{ comic.image }}" alt="{{ comic.alt }}">
+        <p><a href="/"><img itemprop="image" src="{{ comic.image }}" alt="{{ comic.alt }}" title="{{ comic.alt }}"></a>
+        </p>
         @endif
-        <div class="card">
+        <div class="card text-left">
             <div class="card-body">
                 <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
