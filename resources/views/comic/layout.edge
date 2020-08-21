@@ -42,28 +42,36 @@
 <body itemscope itemtype="http://schema.org/ComicStory">
     <h1 class="d-none">Power of Power - {{ comic.title }} - {{ comic.keywords }}</h1>
     <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand h1" href="/">Power of Power</a>
+        <div class="container text-center">
+            <a class="navbar-brand" href="/">Power of Power</a>
         </div>
     </nav>
     <nav class="navbar navbar-light bg-light">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="https://powerofpower.herokuapp.com/">
-                    Admin
-                </a>
-            </li>
-        </ul>
+        <div class="container">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-    <div class="container">
-        <p itemprop="name" class="d-none">{{ comic.title }}</p>
-        <img itemprop="image" src="{{ comic.image }}" alt="{{ comic.alt }}">
-        <img src="{{ comic.thumb }}" alt="thumb">
-        <div>{{ raw(comic.comment) }}</div>
-        <p>Posted: {{ comic.posted }}</p>
-        <p>Keywords: {{ comic.keywords }}</p>
-        <p itemprop="description">Transcript: {{ raw(comic.transcript) }}</p>
+    <div class="container text-center">
+        @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
+        @else
+        <img itemprop="image" src="{{ comic.image }}" alt="{{ comic.alt }}">
+        @endif
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
+                <div class="card-text">{{ raw(comic.comment) }}</div>
+                <small class="card-text">Posted: {{ comic.posted.toDateString() }}</small>
+                <small class="card-text">Keywords: {{ comic.keywords }}</small>
+                <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
+            </div>
+        </div>
+        <img src="{{ comic.thumb }}" alt="thumb">
     </div>
     <!--
     Reddit: https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all
