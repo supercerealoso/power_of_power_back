@@ -61,21 +61,21 @@
         </div>
     </nav>
     <div class="container text-center">
-        <a href="https://www.redbubble.com/people/supercerealoso/shop"><img itemprop="image" class="img-fluid mb-3"
-                src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a>
+        <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img itemprop="image" class="img-fluid"
+                    src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
-        <a href="/"><img itemprop="image" class="img-fluid mb-3" src="{{ comic.image }}" alt="{{ comic.alt }}"
-                title="{{ comic.alt }}"></a>
+        <p><a href="/"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
+                    title="{{ comic.alt }}"></a></p>
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link" href="/comics/1">First</a>
-                <a class="nav-item nav-link" href="/comics/1">Prev</a>
-                <a class="nav-item nav-link" href="/comics/2">Random</a>
-                <a class="nav-item nav-link" href="/comics/2">Next</a>
-                <a class="nav-item nav-link" href="/comics/2">Last</a>
+                <a class="nav-item nav-link" href="/comics/1">◀️◀️First</a>
+                <a class="nav-item nav-link" href="/comics/1">◀️Prev</a>
+                <a class="nav-item nav-link" href="/comics/2">◀️Random▶️</a>
+                <a class="nav-item nav-link" href="/comics/2">Next▶️</a>
+                <a class="nav-item nav-link" href="/comics/2">Last▶️▶️</a>
             </div>
         </nav>
         <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
