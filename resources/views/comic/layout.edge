@@ -36,14 +36,15 @@
         content="There is not enough statistical evidence to reject that this comic is cool.">
 </head>
 
-<body>
-    <h1>{{ comic.title }}</h1>
-    <img src="{{ comic.image }}" alt="{{ comic.alt }}">
+<body itemscope itemtype="http://schema.org/ComicStory">
+    <h1 itemprop="name">{{ comic.title }}</h1>
+    <img itemprop="image" src="{{ comic.image }}" alt="{{ comic.alt }}">
     <img src="{{ comic.thumb }}" alt="thumb">
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">supercerealoso</span>
     <div>{{ raw(comic.comment) }}</div>
     <p>Posted: {{ comic.posted }}</p>
     <p>Keywords: {{ comic.keywords }}</p>
-    <p>Transcript: {{ raw(comic.transcript) }}</p>
+    <p itemprop="description">Transcript: {{ raw(comic.transcript) }}</p>
     <div>{{ raw(comic.special) }}</div>
 </body>
 
