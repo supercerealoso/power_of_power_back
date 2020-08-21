@@ -41,7 +41,7 @@
     <style>
         @font-face {
             font-family: 'supercerealoso';
-            src: url('/supercerealoso.woff2') format('woff2'), url('/supercerealoso.woff') format('woff');
+            src: url('/fonts/supercerealoso.woff2') format('woff2'), url('/fonts/supercerealoso.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
@@ -52,15 +52,16 @@
 
         .navbar-brand {
             font-family: 'supercerealoso';
+            text-transform: uppercase;
             font-weight: bolder;
-            font-size: larger;
+            font-size: x-large;
         }
     </style>
 </head>
 
 <body itemscope itemtype="http://schema.org/ComicStory">
     <h1 class="d-none">Power of Power - {{ comic.title }} - {{ comic.keywords }}</h1>
-    <nav class="navbar navbar-dark bg-dark mb-4">
+    <nav class="navbar navbar-dark bg-dark mb-2">
         <div class="container text-center">
             <a class="navbar-brand" href="/">Power of Power</a>
         </div>
