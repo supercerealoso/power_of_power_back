@@ -51,7 +51,7 @@
 
 <body itemscope itemtype="http://schema.org/ComicStory">
     <h1 class="d-none">Power of Power - {{ comic.title }} - {{ comic.keywords }}</h1>
-    <nav class="navbar navbar-expand navbar-dark bg-dark mb-2">
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
         <div class="container">
             <a class="navbar-brand" href="/"><img src="/img/powerofpowerbrand.svg" alt="Power of Power"></a>
             <div class="navbar-nav">
@@ -61,13 +61,15 @@
         </div>
     </nav>
     <div class="container text-center">
+        <a href="https://www.redbubble.com/people/supercerealoso/shop"><img itemprop="image" class="img-fluid mb-3"
+                src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a>
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
-        <p><a href="/"><img itemprop="image" class="img-responsive" src="{{ comic.image }}" alt="{{ comic.alt }}"
-                    title="{{ comic.alt }}"></a></p>
+        <a href="/"><img itemprop="image" class="img-fluid mb-3" src="{{ comic.image }}" alt="{{ comic.alt }}"
+                title="{{ comic.alt }}"></a>
         @endif
-        <nav class="navbar navbar-expand navbar-dark bg-dark mb-2">
+        <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
             <div class="navbar-nav mx-auto">
                 <a class="nav-item nav-link" href="/comics/1">First</a>
                 <a class="nav-item nav-link" href="/comics/1">Prev</a>
@@ -76,16 +78,12 @@
                 <a class="nav-item nav-link" href="/comics/2">Last</a>
             </div>
         </nav>
-        <div class="card text-left">
-            <div class="card-body">
-                <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
-                <div class="card-text">{{ raw(comic.comment) }}</div>
-                <small class="card-text">Posted: {{ comic.posted.toDateString() }}</small>
-                <small class="card-text">Keywords: {{ comic.keywords }}</small>
-                <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
-            </div>
-        </div>
+        <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
+        <div class="card-text">{{ raw(comic.comment) }}</div>
+        <small class="card-text">Posted: {{ comic.posted.toDateString() }}</small>
+        <small class="card-text">Keywords: {{ comic.keywords }}</small>
+        <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
         <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
     </div>
     <!--
