@@ -39,8 +39,19 @@
         content="There is not enough statistical evidence to reject that this comic is cool.">
 
     <style>
+        @font-face {
+            font-family: 'supercerealoso';
+            src: url('/supercerealoso.woff2') format('woff2'), url('/supercerealoso.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         .navbar-dark {
             background-color: #074c97 !important;
+        }
+
+        .navbar-brand {
+            font-family: 'supercerealoso';
         }
     </style>
 </head>
@@ -52,21 +63,12 @@
             <a class="navbar-brand" href="/">Power of Power</a>
         </div>
     </nav>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <div class="container text-center">
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
-        <p><a href="/"><img itemprop="image" src="{{ comic.image }}" alt="{{ comic.alt }}" title="{{ comic.alt }}"></a>
-        </p>
+        <p><a href="/"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
+                    title="{{ comic.alt }}"></a></p>
         @endif
         <div class="card text-left">
             <div class="card-body">
@@ -79,6 +81,7 @@
             </div>
         </div>
         <img src="{{ comic.thumb }}" alt="thumb">
+        <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
     </div>
     <!--
     Reddit: https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all
