@@ -39,22 +39,8 @@
         content="There is not enough statistical evidence to reject that this comic is cool.">
 
     <style>
-        @font-face {
-            font-family: 'supercerealoso';
-            src: url('/fonts/supercerealoso.woff2') format('woff2'), url('/fonts/supercerealoso.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
         .navbar-dark {
             background-color: #074c97 !important;
-        }
-
-        .navbar-brand {
-            font-family: 'supercerealoso';
-            text-transform: uppercase;
-            font-weight: bolder;
-            font-size: x-large;
         }
     </style>
 </head>
@@ -83,7 +69,6 @@
                 <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
             </div>
         </div>
-        <img src="{{ comic.thumb }}" alt="thumb">
         <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
     </div>
     <!--
