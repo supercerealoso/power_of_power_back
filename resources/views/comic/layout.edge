@@ -49,10 +49,11 @@
     <h1 class="d-none">Power of Power - {{ comic.title }} - {{ comic.keywords }}</h1>
     <nav class="navbar navbar-expand navbar-dark mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="https://i.imgur.com/6LyZtmJ.png" alt="Power of Power"></a>
+            <a class="navbar-brand" href="/"><img class="img-fluid" src="https://i.imgur.com/6LyZtmJ.png"
+                    alt="Power of Power"></a>
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/archive">📁Archive</a>
-                <a class="nav-item nav-link" href="/blog">📔Blog</a>
+                <a class="nav-item nav-link" href="/archive">📁<span class="hidden-xs">Archive</span></a>
+                <a class="nav-item nav-link" href="/blog">📔<span class="hidden-xs">Blog</span></a>
             </div>
         </div>
     </nav>
@@ -67,15 +68,18 @@
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link" href="/comics/1">◀️◀️First</a>
+                <a class="nav-item nav-link" href="/comics/1">◀️◀️<span class="hidden-xs">First</span></a>
                 @if(comic.index === 1)
-                <a class="nav-item nav-link" href="/comics/1">◀️Prev</a>
+                <a class="nav-item nav-link" href="/comics/1">◀️<span class="hidden-xs">Prev</span></a>
                 @else
-                <a class="nav-item nav-link" href="/comics/{{ comic.index - 1 }}">◀️Prev</a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index - 1 }}">◀️<span
+                        class="hidden-xs">Prev</span></a>
                 @endif
-                <a class="nav-item nav-link" href="/comics/{{ comic.index }}">◀️Random▶️</a>
-                <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}">Next▶️</a>
-                <a class="nav-item nav-link" href="/comics/last">Last▶️▶️</a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index }}">◀️<span
+                        class="hidden-xs">Random</span>▶️</a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}"><span
+                        class="hidden-xs">Next</span>▶️</a>
+                <a class="nav-item nav-link" href="/comics/last"><span class="hidden-xs">Last</span>▶️▶️</a>
             </div>
         </nav>
         <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/ukzZMCv.png"
@@ -84,20 +88,19 @@
                 alt="Twitter" class="mx-1"></a>
         <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
                 src="https://i.imgur.com/uj2GPh8.png" alt="Reddit" class="mx-1"></a>
-        <div><small>You may also like:</small></div>
-        <div id="popular"></div>
-        <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <nav class="navbar navbar-expand navbar-dark bg-dark mt-3">
             <span class="navbar-text">
                 <a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:
                 <span class="card-title" itemprop="name">{{ comic.title }}</span>
             </span>
         </nav>
-        <div class="card-text">{{ raw(comic.comment) }}</div>
+        <div class="text-left">{{ raw(comic.comment) }}</div>
         <small class="text-muted text-rigth">Posted: {{ comic.posted.toDateString() }}</small>
         <hr>
         <small class="card-text">Keywords: {{ comic.keywords }}</small>
         <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
-        <small class="text-muted"><a class="nav-link" href="https://powerofpower.herokuapp.com/">Power of Power</a> is
+        <hr>
+        <small class="text-muted"><a href="https://powerofpower.herokuapp.com/">Power of Power</a> is
             recorded in front of a live studio audience.</small>
     </div>
     <!--
@@ -110,19 +113,7 @@
         integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
         crossorigin="anonymous"></script>
     <script>
-        var popular = [
-            { thumb: 'http://powerofpower.net/files/83.png', index: 83 },
-            { thumb: 'http://powerofpower.net/files/43.png', index: 43 },
-            { thumb: 'http://powerofpower.net/files/72.png', index: 72 },
-            { thumb: 'http://powerofpower.net/files/85.png', index: 85 },
-            { thumb: 'http://powerofpower.net/files/81.png', index: 81 }
-        ];
-        var content = '';
-        for (var i = 0; i < popular.length; i++) {
-            content += '<a href="/comics/' + popular[i].index + '">';
-            content += '<img src="' + popular[i].thumb + '" alt="Comic ' + popular[i].index + '"></a>';
-        }
-        $('#popular').html(content);
+        console.log('Hacking powerofpower, huh?');
     </script>
 </body>
 
