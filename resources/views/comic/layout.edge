@@ -47,17 +47,17 @@
 
 <body itemscope itemtype="http://schema.org/ComicStory">
     <h1 class="d-none">Power of Power - {{ comic.title }} - {{ comic.keywords }}</h1>
-    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+    <nav class="navbar navbar-expand navbar-dark mb-3">
         <div class="container">
             <a class="navbar-brand" href="/"><img src="https://i.imgur.com/6LyZtmJ.png" alt="Power of Power"></a>
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/archive">Archive</a>
-                <a class="nav-item nav-link" href="/blog">Blog</a>
+                <a class="nav-item nav-link" href="/archive">📁Archive</a>
+                <a class="nav-item nav-link" href="/blog">📔Blog</a>
             </div>
         </div>
     </nav>
     <div class="container text-center">
-        <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img itemprop="image" class="img-fluid"
+        <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
                     src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
@@ -68,40 +68,62 @@
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
             <div class="navbar-nav mx-auto">
                 <a class="nav-item nav-link" href="/comics/1">◀️◀️First</a>
+                @if(comic.index === 1)
                 <a class="nav-item nav-link" href="/comics/1">◀️Prev</a>
-                <a class="nav-item nav-link" href="/comics/2">◀️Random▶️</a>
-                <a class="nav-item nav-link" href="/comics/2">Next▶️</a>
-                <a class="nav-item nav-link" href="/comics/2">Last▶️▶️</a>
+                @else
+                <a class="nav-item nav-link" href="/comics/{{ comic.index - 1 }}">◀️Prev</a>
+                @endif
+                <a class="nav-item nav-link" href="/comics/{{ comic.index }}">◀️Random▶️</a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}">Next▶️</a>
+                <a class="nav-item nav-link" href="/comics/last">Last▶️▶️</a>
             </div>
         </nav>
         <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/ukzZMCv.png"
-                alt="Facebook" /></a>
+                alt="Facebook" class="mx-1"></a>
         <a itemprop="sameAs" href="https://twitter.com/PwrOfPwr"><img src="https://i.imgur.com/ii7BpIN.png"
-                alt="Twitter" /></a>
+                alt="Twitter" class="mx-1"></a>
         <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
-                src="https://i.imgur.com/uj2GPh8.png" alt="Reddit" /></a>
-        <hr>
-        <h5 class="card-title" itemprop="name">{{ comic.title }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">supercerealoso:</h6>
+                src="https://i.imgur.com/uj2GPh8.png" alt="Reddit" class="mx-1"></a>
+        <div><small>You may also like:</small></div>
+        <div id="popular"></div>
+        <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+            <span class="navbar-text">
+                <a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:
+                <span class="card-title" itemprop="name">{{ comic.title }}</span>
+            </span>
+        </nav>
         <div class="card-text">{{ raw(comic.comment) }}</div>
-        <small class="card-text">Posted: {{ comic.posted.toDateString() }}</small>
+        <small class="text-muted text-rigth">Posted: {{ comic.posted.toDateString() }}</small>
+        <hr>
         <small class="card-text">Keywords: {{ comic.keywords }}</small>
         <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
-        <a class="nav-link" href="https://powerofpower.herokuapp.com/">Admin</a>
+        <small class="text-muted"><a class="nav-link" href="https://powerofpower.herokuapp.com/">Power of Power</a> is
+            recorded in front of a live studio audience.</small>
     </div>
     <!--
     Agregar instagram
     Sitemap y Robots
-    Que haya links a otros sitios
     Asegurarse que la ruta raiz tenga todas las metatags
-    Agregar Alt a todas las imagenes
     Agregar las palabras supercerealoso, powerofpower, power of power, webcomic al cuerpo
-    Considerar imagenes en formatos nuevos
-    Volver a publicar en 9gag
     -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
         crossorigin="anonymous"></script>
+    <script>
+        var popular = [
+            { thumb: 'http://powerofpower.net/files/83.png', index: 83 },
+            { thumb: 'http://powerofpower.net/files/43.png', index: 43 },
+            { thumb: 'http://powerofpower.net/files/72.png', index: 72 },
+            { thumb: 'http://powerofpower.net/files/85.png', index: 85 },
+            { thumb: 'http://powerofpower.net/files/81.png', index: 81 }
+        ];
+        var content = '';
+        for (var i = 0; i < popular.length; i++) {
+            content += '<a href="/comics/' + popular[i].index + '">';
+            content += '<img src="' + popular[i].thumb + '" alt="Comic ' + popular[i].index + '"></a>';
+        }
+        $('#popular').html(content);
+    </script>
 </body>
 
 </html>
