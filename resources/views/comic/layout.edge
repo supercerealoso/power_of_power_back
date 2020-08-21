@@ -52,8 +52,8 @@
             <a class="navbar-brand" href="/"><img class="img-fluid" src="https://i.imgur.com/6LyZtmJ.png"
                     alt="Power of Power"></a>
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/archive">📁<span class="hidden-xs">Archive</span></a>
-                <a class="nav-item nav-link" href="/blog">📔<span class="hidden-xs">Blog</span></a>
+                <a class="nav-item nav-link" href="/archive">📁<span class="d-none d-sm-block">Archive</span></a>
+                <a class="nav-item nav-link" href="/blog">📔<span class="d-none d-sm-block">Blog</span></a>
             </div>
         </div>
     </nav>
@@ -68,18 +68,18 @@
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link" href="/comics/1">◀️◀️<span class="hidden-xs">First</span></a>
+                <a class="nav-item nav-link" href="/comics/1">◀️◀️<span class="d-none d-sm-block">First</span></a>
                 @if(comic.index === 1)
-                <a class="nav-item nav-link" href="/comics/1">◀️<span class="hidden-xs">Prev</span></a>
+                <a class="nav-item nav-link" href="/comics/1">◀️<span class="d-none d-sm-block">Prev</span></a>
                 @else
                 <a class="nav-item nav-link" href="/comics/{{ comic.index - 1 }}">◀️<span
-                        class="hidden-xs">Prev</span></a>
+                        class="d-none d-sm-block">Prev</span></a>
                 @endif
                 <a class="nav-item nav-link" href="/comics/{{ comic.index }}">◀️<span
-                        class="hidden-xs">Random</span>▶️</a>
+                        class="d-none d-sm-block">Random</span>▶️</a>
                 <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}"><span
-                        class="hidden-xs">Next</span>▶️</a>
-                <a class="nav-item nav-link" href="/comics/last"><span class="hidden-xs">Last</span>▶️▶️</a>
+                        class="d-none d-sm-block">Next</span>▶️</a>
+                <a class="nav-item nav-link" href="/comics/last"><span class="d-none d-sm-block">Last</span>▶️▶️</a>
             </div>
         </nav>
         <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/ukzZMCv.png"
