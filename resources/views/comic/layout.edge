@@ -98,22 +98,19 @@
                 alt="Twitter" class="mx-2"></a>
         <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
                 src="https://i.imgur.com/lb9irFz.png" alt="Reddit" class="mx-2"></a>
+        <hr>
 
-        <div class="bg-dark text-light p-2 text-left row">
-            <div class="col">
-                <a href="https://www.facebook.com/pwrofpwr"><img class="float-left"
-                        src="https://i.imgur.com/trQJtzG.png" alt="supercerealoso"></a>
-            </div>
-            <div class="col-12">
-                <p class="h5">
-                    <a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:
-                    <span itemprop="name">{{ comic.title }}</span>
-                </p>
-                <small class="text-muted text-rigth">Posted: {{ comic.posted.toDateString() }}</small>
-            </div>
-        </div>
+        <a href="https://www.facebook.com/pwrofpwr"><img class="float-left" src="https://i.imgur.com/trQJtzG.png"
+                alt="supercerealoso"></a>
+        <p class="h5">
+            <a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:
+            <span itemprop="name">{{ comic.title }}</span>
+        </p>
+        <p><small class="text-muted">Posted: {{ comic.posted.toDateString() }}</small></p>
         <div class="text-left">{{ raw(comic.comment) }}</div>
         <hr>
+
+        <p>And now, stuff that might fool Google to do my marketing job for me:</p>
         <small class="card-text">Keywords: {{ comic.keywords }}</small>
         <small class="card-text" itemprop="description">Transcript: {{ raw(comic.transcript) }}</small>
         <hr>
