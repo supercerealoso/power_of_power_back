@@ -63,7 +63,7 @@
         <div>{{ raw(comic.special) }}</div>
         @else
         <p><a href="#random"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
-                    title="{{ comic.alt }}"></a></p>
+                    title="{{ comic.alt }}" onclick="random"></a></p>
         @endif
 
         <nav class="navbar navbar-expand navbar-dark mb-3">
@@ -80,7 +80,7 @@
                     ◀️<span class="d-none d-sm-inline">Prev</span>
                 </a>
                 @endif
-                <a class="nav-item nav-link" href="#random">
+                <a class="nav-item nav-link" href="#random" onclick="random">
                     ◀️<span class="d-none d-sm-inline">Random</span>▶️
                 </a>
                 <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}">
@@ -126,11 +126,21 @@
     Agregar instagram
     Sitemap y Robots
     -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
-        crossorigin="anonymous"></script>
     <script>
         console.log('Hacking powerofpower, huh?');
+        var last = 1;
+        function random() {
+            var index = Math.floor(Math.random() * (last - 1)) + 1;
+            window.location.href = "/comics/" + index;
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                last = JSON.parse(this.responseText).number;
+            }
+        };
+        xhttp.open("GET", "/comics/number.json", true);
+        xhttp.send();
     </script>
 </body>
 
