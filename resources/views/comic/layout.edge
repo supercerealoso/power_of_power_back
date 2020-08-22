@@ -101,21 +101,19 @@
         <hr>
 
         <div class="text-left">
-            <a href="https://www.facebook.com/pwrofpwr"><img class="float-left" src="https://i.imgur.com/trQJtzG.png"
+            <a href="https://www.facebook.com/pwrofpwr"><img class="float-left mr-2" src="https://i.imgur.com/trQJtzG.png"
                     alt="supercerealoso"></a>
-            <span class="float-left">
-                <p class="h5"><a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:<span
-                        itemprop="name">{{ comic.title }}</span></p>
-                <p><small class="text-muted">Posted: {{ comic.posted.toDateString() }}</small></p>
-                {{ raw(comic.comment) }}
-            </span>
+            <p class="h5"><a href="https://twitter.com/PwrOfPwr">supercerealoso</a>: <span
+                    itemprop="name">{{ comic.title }}</span></p>
+            <p><small class="text-muted">Posted: {{ comic.posted.toDateString() }}</small></p>
+            {{ raw(comic.comment) }}
         </div>
         <hr>
 
         <div class="text-left">
             <p>And now, stuff that might fool Google into doing my marketing job for me.</p>
             <p>Keywords: supercerealoso, powerofpower, power of power, webcomic, {{ comic.keywords }}</p>
-            <p>Transcript:</p>
+            Transcript:<br>
             <span itemprop="description">{{ raw(comic.transcript) }}</span>
         </div>
         <hr>
