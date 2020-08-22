@@ -4,31 +4,25 @@
 
 <head>
     <title>Power of Power - {{ comic.title }} - {{ comic.keywords }}</title>
-
     <link rel="shortcut icon" href="https://i.imgur.com/trQJtzG.png">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss">
     <link rel="canonical" href="https://powerofpower.net/comics/{{ comic.index }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
     <meta charset="utf-8">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="msvalidate.01" content="64791B2843C37E5B4A08D38FB20261E1">
     <meta name="google-site-verification" content="QIcSwGa6HiIdNgkGgM-9KC9f6srJtiAQPeN8aIjV2Hw">
-
     <meta name="keywords" content="supercerealoso, powerofpower, power of power, webcomic, {{ comic.keywords }}">
     <meta name="description"
         content="{{ comic.title }} - There is not enough statistical evidence to reject that this comic is cool. {{ comic.keywords }}">
-
     <meta name="twitter:card" content="photo">
     <meta name="twitter:site" content="@pwrofpwr">
     <meta name="twitter:creator" content="@pwrofpwr">
     <meta name="twitter:title" content="Power of Power - {{ comic.title }}">
     <meta name="twitter:image:src" content="{{ comic.image }}">
     <meta name="twitter:domain" content="https://powerofpower.net">
-
     <meta property="fb:app_id" content="1973805279585727">
     <meta property="og:image" content="{{ comic.image }}">
     <meta property="og:title" content="Power of Power - {{ comic.title }}">
@@ -37,10 +31,13 @@
     <meta property="og:type" content="profile">
     <meta property="og:description"
         content="There is not enough statistical evidence to reject that this comic is cool.">
-
     <style>
         .navbar-dark {
             background-color: #074c97 !important;
+        }
+
+        .small-btn {
+            width: 50px;
         }
     </style>
 </head>
@@ -67,7 +64,7 @@
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
-        <p><a href="/"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
+        <p><a href="#random"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
                     title="{{ comic.alt }}"></a></p>
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
@@ -84,7 +81,7 @@
                     ◀️<span class="d-none d-sm-inline">Prev</span>
                 </a>
                 @endif
-                <a class="nav-item nav-link" href="/comics/{{ comic.index }}">
+                <a class="nav-item nav-link" href="#random">
                     ◀️<span class="d-none d-sm-inline">Random</span>▶️
                 </a>
                 <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}">
@@ -96,11 +93,11 @@
             </div>
         </nav>
         <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/ukzZMCv.png"
-                alt="Facebook" class="mx-1"></a>
+                alt="Facebook" class="mx-1 small-btn"></a>
         <a itemprop="sameAs" href="https://twitter.com/PwrOfPwr"><img src="https://i.imgur.com/ii7BpIN.png"
-                alt="Twitter" class="mx-1"></a>
+                alt="Twitter" class="mx-1 small-btn"></a>
         <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
-                src="https://i.imgur.com/uj2GPh8.png" alt="Reddit" class="mx-1"></a>
+                src="https://i.imgur.com/uj2GPh8.png" alt="Reddit" class="mx-1 small-btn"></a>
         <nav class="navbar navbar-expand navbar-dark bg-dark mt-3">
             <span class="navbar-text">
                 <a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:
