@@ -72,18 +72,27 @@
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link" href="/comics/1">◀️◀️<span class="d-none d-sm-block">First</span></a>
+                <a class="nav-item nav-link" href="/comics/1">
+                    ◀️◀️<span class="d-none d-sm-inline">First</span>
+                </a>
                 @if(comic.index === 1)
-                <a class="nav-item nav-link" href="/comics/1">◀️<span class="d-none d-sm-block">Prev</span></a>
+                <a class="nav-item nav-link" href="/comics/1">
+                    ◀️<span class="d-none d-sm-inline">Prev</span>
+                </a>
                 @else
-                <a class="nav-item nav-link" href="/comics/{{ comic.index - 1 }}">◀️<span
-                        class="d-none d-sm-block">Prev</span></a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index - 1 }}">
+                    ◀️<span class="d-none d-sm-inline">Prev</span>
+                </a>
                 @endif
-                <a class="nav-item nav-link" href="/comics/{{ comic.index }}">◀️<span
-                        class="d-none d-sm-block">Random</span>▶️</a>
-                <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}"><span
-                        class="d-none d-sm-block">Next</span>▶️</a>
-                <a class="nav-item nav-link" href="/comics/last"><span class="d-none d-sm-block">Last</span>▶️▶️</a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index }}">
+                    ◀️<span class="d-none d-sm-inline">Random</span>▶️
+                </a>
+                <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}">
+                    <span class="d-none d-sm-inline">Next</span>▶️
+                </a>
+                <a class="nav-item nav-link" href="/comics/last">
+                    <span class="d-none d-sm-inline">Last</span>▶️▶️
+                </a>
             </div>
         </nav>
         <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/ukzZMCv.png"
