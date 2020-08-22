@@ -63,7 +63,7 @@
         <div>{{ raw(comic.special) }}</div>
         @else
         <p><a href="#random"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
-                    title="{{ comic.alt }}" onclick="random"></a></p>
+                    title="{{ comic.alt }}" onclick="random()"></a></p>
         @endif
 
         <nav class="navbar navbar-expand navbar-dark mb-3">
@@ -80,13 +80,13 @@
                     ◀️<span class="d-none d-sm-inline">Prev</span>
                 </a>
                 @endif
-                <a class="nav-item nav-link" href="#random" onclick="random">
+                <a class="nav-item nav-link" href="#random" onclick="random()">
                     ◀️<span class="d-none d-sm-inline">Random</span>▶️
                 </a>
-                <a class="nav-item nav-link" href="/comics/{{ comic.index + 1 }}">
+                <a id="next" class="nav-item nav-link" href="/comics/{{ comic.index }}">
                     <span class="d-none d-sm-inline">Next</span>▶️
                 </a>
-                <a class="nav-item nav-link" href="/comics/last">
+                <a id="last" class="nav-item nav-link" href="/comics/{{ comic.index }}">
                     <span class="d-none d-sm-inline">Last</span>▶️▶️
                 </a>
             </div>
@@ -122,24 +122,26 @@
         <p><small class="text-muted"><a href="https://powerofpower.herokuapp.com/">Power of Power</a> is
                 recorded in front of a live studio audience.</small></p>
     </div>
-    <!--
-    Agregar instagram
-    Sitemap y Robots
-    -->
+
     <script>
         console.log('Hacking powerofpower, huh?');
-        var last = 1;
+        var last = +'{{ comic.index }}';
         function random() {
             var index = Math.floor(Math.random() * (last - 1)) + 1;
-            window.location.href = "/comics/" + index;
+            window.location.href = '/comics/' + index;
         }
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
-                last = JSON.parse(this.responseText).number;
+                var number = JSON.parse(this.responseText).number;
+                if (last < number) {
+                    document.getElementById('next').href = '/comics/' + (last + 1);
+                    document.getElementById('last').href = '/comics/' + number;
+                    last = number;
+                }
             }
         };
-        xhttp.open("GET", "/comics/number.json", true);
+        xhttp.open('GET', '/comics/number.json', true);
         xhttp.send();
     </script>
 </body>
