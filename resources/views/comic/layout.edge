@@ -35,10 +35,6 @@
         .navbar-dark {
             background-color: #074c97 !important;
         }
-
-        .small-btn {
-            width: 40px;
-        }
     </style>
 </head>
 
@@ -59,15 +55,18 @@
         </div>
     </nav>
     <div class="container text-center">
+
         <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
                     src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
+
         @if(comic.special)
         <div>{{ raw(comic.special) }}</div>
         @else
         <p><a href="#random"><img itemprop="image" class="img-fluid" src="{{ comic.image }}" alt="{{ comic.alt }}"
                     title="{{ comic.alt }}"></a></p>
         @endif
-        <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+
+        <nav class="navbar navbar-expand navbar-dark mb-3">
             <div class="navbar-nav mx-auto">
                 <a class="nav-item nav-link" href="/comics/1">
                     ◀️◀️<span class="d-none d-sm-inline">First</span>
@@ -92,16 +91,18 @@
                 </a>
             </div>
         </nav>
+
         <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/fC06TZf.png"
-                alt="Facebook" class="mx-2 small-btn"></a>
+                alt="Facebook" class="mx-2"></a>
         <a itemprop="sameAs" href="https://twitter.com/PwrOfPwr"><img src="https://i.imgur.com/zEFzvhZ.png"
-                alt="Twitter" class="mx-2 small-btn"></a>
+                alt="Twitter" class="mx-2"></a>
         <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
-                src="https://i.imgur.com/lb9irFz.png" alt="Reddit" class="mx-2 small-btn"></a>
-        <nav class="navbar navbar-expand navbar-dark bg-dark mt-3">
-            <span class="navbar-text">
+                src="https://i.imgur.com/lb9irFz.png" alt="Reddit" class="mx-2"></a>
+
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-text lead">
                 <a href="https://twitter.com/PwrOfPwr">supercerealoso</a>:
-                <span class="card-title" itemprop="name">{{ comic.title }}</span>
+                <span itemprop="name">{{ comic.title }}</span>
             </span>
         </nav>
         <div class="text-left">{{ raw(comic.comment) }}</div>
