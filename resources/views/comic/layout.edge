@@ -127,7 +127,7 @@
         console.log('Hacking powerofpower, huh?');
         var last = +'{{ comic.index }}';
         function random() {
-            var index = Math.floor(Math.random() * (last - 1)) + 1;
+            var index = Math.floor(Math.random() * last) + 1;
             window.location.href = '/comics/' + index;
         }
         var xhttp = new XMLHttpRequest();
