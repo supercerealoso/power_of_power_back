@@ -123,8 +123,16 @@
                 recorded in front of a live studio audience.</small></p>
     </div>
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37190779-1"></script>
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-37190779-1');
+
         console.log('Hacking powerofpower, huh?');
+
         var last = +'{{ comic.index }}';
         function random() {
             var index = Math.floor(Math.random() * last) + 1;
