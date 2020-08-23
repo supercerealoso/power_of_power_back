@@ -241,7 +241,7 @@ class ComicController {
         const buff = new Buffer(text);
         const register = await meta.find({
             name: 'count'
-        }).next();
+        }).next() || 0;
         const file = await octokit.repos.createOrUpdateFileContents({
             owner: 'supercerealoso',
             repo: 'power_of_power_front',
