@@ -1,8 +1,6 @@
 @layout('layout')
 
 @section('content')
-<a class="btn btn-dark" href="/comic/create" role="button">Create Comic</a>
-<hr>
 <form class="d-inline" method="POST" action="/comic/count">
     {{ csrfField() }}
     <button type="submit" class="btn btn-dark">Update Comic Count</button>
