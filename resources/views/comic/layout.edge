@@ -133,15 +133,15 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
-                var number = JSON.parse(this.responseText).number;
-                if (last < number) {
+                var count = JSON.parse(this.responseText).count;
+                if (last < count) {
                     document.getElementById('next').href = '/comics/' + (last + 1);
-                    document.getElementById('last').href = '/comics/' + number;
-                    last = number;
+                    document.getElementById('last').href = '/comics/' + count;
+                    last = count;
                 }
             }
         };
-        xhttp.open('GET', '/comics/number.json', true);
+        xhttp.open('GET', '/comics/count.json', true);
         xhttp.send();
     </script>
 </body>

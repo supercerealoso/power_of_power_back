@@ -221,6 +221,43 @@ class ComicController {
         await mongo.close();
         return response.redirect('back');
     }
+    async count({ response, auth, session }) {
+        try {
+            await auth.check();
+        } catch (e) {
+            await session.withErrors({ login: 'Login fail' });
+            return response.redirect('back');
+        }
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        // get the count
+        const comics = mongo.db('powerofpower').collection('comics');
+        const count = await comics.countDocuments({});
+        // update the file
+        const meta = mongo.db('powerofpower').collection('meta');
+        const text = JSON.stringify({ count: count });
+        const buff = new Buffer(text);
+        const register = await meta.find({
+            name: 'count'
+        }).next();
+        const file = await octokit.repos.createOrUpdateFileContents({
+            owner: 'supercerealoso',
+            repo: 'power_of_power_front',
+            path: 'comics/count.json',
+            message: 'automated',
+            content: buff.toString('base64'),
+            sha: register.sha
+        });
+        meta.update(
+            { name: 'count' },
+            { $set: { sha: file.data.content.sha } },
+            { upsert: true }
+        );
+        await mongo.close();
+        return response.redirect('back');
+    }
 }
 
 module.exports = ComicController;

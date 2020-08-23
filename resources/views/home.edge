@@ -2,5 +2,9 @@
 
 @section('content')
 <a class="btn btn-dark" href="/comic/create" role="button">Create Comic</a>
-<a class="btn btn-dark" href="/comic/list" role="button">List Comics</a>
+<hr>
+<form class="d-inline" method="POST" action="/comic/count">
+    {{ csrfField() }}
+    <button type="submit" class="btn btn-sm btn-dark">Update Comic Count</button>
+</form>
 @endsection
