@@ -23,7 +23,11 @@
                     <button type="submit" class="btn btn-sm btn-dark">Publish</button>
                 </form>
             </td>
-            <td>{{ comic.top }}</td>
+            @if(comic.top)
+            <td>✅</td>
+            @else
+            <td></td>
+            @endif
         </tr>
         @endeach
     </tbody>
