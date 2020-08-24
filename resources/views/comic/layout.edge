@@ -55,7 +55,6 @@
         </div>
     </nav>
     <div class="container text-center">
-
         <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
                     src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
 
@@ -125,14 +124,12 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37190779-1"></script>
     <script>
+        // google analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'UA-37190779-1');
-
-        console.log('Hacking powerofpower, huh?');
-
+        // render last comic link
         var last = +'{{ comic.index }}';
         function random() {
             var index = Math.floor(Math.random() * last) + 1;
