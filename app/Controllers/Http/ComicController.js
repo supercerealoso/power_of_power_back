@@ -85,8 +85,9 @@ class ComicController {
         const comics = await collection.find({}, {
             index: 1,
             title: 1,
-            top: 1
-        }).sort({ index: -1 }).toArray();
+            top: 1,
+            version: 1
+        }).sort({ version: 1, index: -1 }).toArray();
         await mongo.close();
         return view.render('comic.list', { comics: comics });
     }
@@ -212,7 +213,8 @@ class ComicController {
                 index: +request.input('index')
             }, {
                 $set: {
-                    sha: file.data.content.sha
+                    sha: file.data.content.sha,
+                    version: 1
                 }
             });
         }

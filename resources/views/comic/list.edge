@@ -5,6 +5,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th scope="col">Version</th>
             <th scope="col">Index</th>
             <th scope="col">Title</th>
             <th scope="col">Top</th>
@@ -13,7 +14,8 @@
     <tbody>
         @each(comic in comics)
         <tr>
-            <th scope="row">{{ comic.index }}</th>
+            <td>{{ comic.version }}</th>
+            <td>{{ comic.index }}</th>
             <td>
                 <a href="https://powerofpower.netlify.app/comics/{{ comic.index }}">{{ comic.title }}</a>
                 <a class="btn btn-sm btn-dark" href="/comic/edit/{{ comic.index }}" role="button">Edit</a>
