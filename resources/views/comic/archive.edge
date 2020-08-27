@@ -56,13 +56,11 @@
     <div class="container text-center">
         <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
                     src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
+        @each(comic in comics)
+        <a href="/comics/{{ comic.index }}"><img class="img-fluid" src="{{ comic.thumb }}" alt="{{ comic.title }}"
+                title="{{ comic.title }}"></a>
+        @endeach
     </div>
-
-    @each(comic in comics)
-    <a href="/comics/{{ comic.index }}"><img class="img-fluid" src="{{ comic.thumb }}" alt="{{ comic.title }}"
-            title="{{ comic.title }}"></a>
-    @endeach
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37190779-1"></script>
     <script>
         // google analytics
