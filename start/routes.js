@@ -30,4 +30,4 @@ Route.post('/comic/edit', 'ComicController.edit');
 Route.post('/comic/publish', 'ComicController.publish');
 Route.post('/comic/count', 'ComicController.count');
 Route.post('/comic/archive', 'ComicController.archive');
-Route.post('/comic/index', 'ComicController.archive');
+Route.post('/comic/index', 'ComicController.index');
