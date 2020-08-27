@@ -9,4 +9,8 @@
     {{ csrfField() }}
     <button type="submit" class="btn btn-dark">Update Comic Archive</button>
 </form>
+<form class="d-inline" method="POST" action="/comic/index">
+    {{ csrfField() }}
+    <button type="submit" class="btn btn-dark">Update Comic Index</button>
+</form>
 @endsection
