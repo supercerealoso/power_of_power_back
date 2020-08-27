@@ -33,4 +33,4 @@ Route.post('/comic/archive', 'ComicController.archive');
 Route.post('/comic/index', 'ComicController.index');
 
 Route.on('/post/create').render('post.create');
-Route.post('/post/create', 'PostController.post');
+Route.post('/post/create', 'PostController.create');
