@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Power of Power - {{ post.title }} - {{ post.keywords }}</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/uuR7Utz.png">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss">
+    <link rel="canonical" href="https://powerofpower.net/blogarchive/{{ post.index }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msvalidate.01" content="64791B2843C37E5B4A08D38FB20261E1">
+    <meta name="google-site-verification" content="QIcSwGa6HiIdNgkGgM-9KC9f6srJtiAQPeN8aIjV2Hw">
+    <meta name="keywords" content="supercerealoso, powerofpower, power of power, webcomic, {{ post.keywords }}">
+    <meta name="description"
+        content="{{ post.title }} - There is not enough statistical evidence to reject that this comic is cool. {{ post.keywords }}">
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@pwrofpwr">
+    <meta name="twitter:creator" content="@pwrofpwr">
+    <meta name="twitter:title" content="Power of Power - {{ post.title }}">
+    <meta name="twitter:image:src" content="{{ post.image }}">
+    <meta name="twitter:domain" content="https://powerofpower.net">
+    <meta property="fb:app_id" content="1973805279585727">
+    <meta property="og:image" content="{{ post.image }}">
+    <meta property="og:title" content="Power of Power - {{ post.title }}">
+    <meta property="og:url" content="https://powerofpower.net/blogarchive/{{ post.index }}">
+    <meta property="og:site_name" content="Power of Power">
+    <meta property="og:type" content="profile">
+    <meta property="og:description"
+        content="There is not enough statistical evidence to reject that this comic is cool.">
+    <style>
+        .navbar-dark {
+            background-color: #074c97 !important;
+        }
+    </style>
+</head>
+
+<body itemscope itemtype="http://schema.org/ComicStory">
+    <h1 class="d-none">Power of Power - {{ post.title }} - {{ post.keywords }}</h1>
+    <nav class="navbar navbar-expand navbar-dark mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img class="img-fluid" src="https://i.imgur.com/6LyZtmJ.png"
+                    alt="Power of Power"></a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/archive">
+                    📁<span class="d-none d-sm-inline">Archive</span>
+                </a>
+                <a class="nav-item nav-link" href="/blog">
+                    📔<span class="d-none d-sm-inline">Blog</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-center">
+        <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
+                    src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
+
+        <a itemprop="sameAs" href="https://www.facebook.com/pwrofpwr"><img src="https://i.imgur.com/fC06TZf.png"
+                alt="Facebook" class="mx-2"></a>
+        <a itemprop="sameAs" href="https://twitter.com/PwrOfPwr"><img src="https://i.imgur.com/zEFzvhZ.png"
+                alt="Twitter" class="mx-2"></a>
+        <a href="https://www.reddit.com/domain/powerofpower.net/top/?sort=top&t=all"><img
+                src="https://i.imgur.com/lb9irFz.png" alt="Reddit" class="mx-2"></a>
+        <hr>
+
+        <div class="text-left">
+            <a href="https://www.facebook.com/pwrofpwr"><img class="float-left mr-2"
+                    src="https://i.imgur.com/trQJtzG.png" alt="supercerealoso"></a>
+            <p class="h5"><a href="https://twitter.com/PwrOfPwr">supercerealoso</a>: <span
+                    itemprop="name">{{ post.title }}</span></p>
+            <p><small class="text-muted">Posted: {{ post.posted.toDateString() }}</small></p>
+            {{ raw(post.content) }}
+        </div>
+        <hr>
+
+        <div class="text-left">
+            <p>And now, stuff that might fool Google into doing my marketing job for me.</p>
+            <p>Keywords: supercerealoso, powerofpower, power of power, webcomic, {{ post.keywords }}</p>
+        </div>
+        <hr>
+        <p><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+                    src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="license"></a></p>
+        <p><small class="text-muted"><a href="https://powerofpower.herokuapp.com/">Power of Power</a> is
+                recorded in front of a live studio audience.</small></p>
+    </div>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37190779-1"></script>
+    <script>
+        // google analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-37190779-1');
+    </script>
+</body>
+
+</html>

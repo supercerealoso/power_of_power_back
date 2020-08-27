@@ -1,0 +1,86 @@
+@layout('layout')
+
+@section('content')
+<p class="lead">Create Blog Post</p>
+@if(flashMessage('post'))
+<p class="text-success">{{ flashMessage('post') }}</p>
+@endif
+@if(hasErrorFor('post'))
+<span class="text-danger">{{ getErrorFor('post') }}</span>
+@endif
+<form method="POST" action="/post/create">
+    {{ csrfField() }}
+    <div class="row">
+        <div class="form-group col">
+            <label>
+                Index
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('index'), hasErrorFor('index')) }}
+            </label>
+            <input type="number" class="form-control" name="index" placeholder="0" value="{{ old('index', '') }}">
+        </div>
+        <div class="form-group col">
+            <label>
+                Posted
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('posted'), hasErrorFor('posted')) }}
+            </label>
+            <input type="date" class="form-control" name="posted" placeholder="00/00/0000"
+                value="{{ old('posted', '') }}">
+        </div>
+        <div class="form-group col">
+            <div class="form-check">
+                @if(old('top', null))
+                <input class="form-check-input" type="checkbox" name="top" value="true" checked>
+                @else
+                <input class="form-check-input" type="checkbox" name="top" value="true">
+                @endif
+                <label class="form-check-label">
+                    Top
+                    {{ elIf('<small class="text-danger">$self</small>', getErrorFor('top'), hasErrorFor('top')) }}
+                </label>
+                <p><small>Check if this comic is one of the most popular</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>
+            Title
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('title'), hasErrorFor('title')) }}
+        </label>
+        <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title', '') }}">
+    </div>
+    <div class="row">
+        <div class="form-group col">
+            <label>
+                Image
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('image'), hasErrorFor('image')) }}
+            </label>
+            <input type="text" class="form-control" name="image" placeholder="https://imgur..."
+                value="{{ old('image', '') }}">
+        </div>
+        <div class="form-group col">
+            <label>
+                Thumb
+                {{ elIf('<small class="text-danger">$self</small>', getErrorFor('thumb'), hasErrorFor('thumb')) }}
+            </label>
+            <input type="text" class="form-control" name="thumb" placeholder="https://imgur..."
+                value="{{ old('thumb', '') }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>
+            Keywords
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('keywords'), hasErrorFor('keywords')) }}
+        </label>
+        <input type="text" class="form-control" name="keywords" placeholder="key, words"
+            value="{{ old('keywords', '') }}">
+    </div>
+    <div class="form-group">
+        <label>
+            Content
+            {{ elIf('<small class="text-danger">$self</small>', getErrorFor('content'), hasErrorFor('content')) }}
+        </label>
+        <textarea class="form-control" name="content" rows="3">{{ old('content', '') }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-dark mb-2">Create</button>
+</form>
+@endsection
