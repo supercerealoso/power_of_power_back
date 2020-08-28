@@ -139,6 +139,75 @@ class PostController {
         await mongo.close();
         return response.redirect('back');
     }
+    async show({ view, params, response }) {
+        // get post
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('posts');
+        const post = await collection.find({
+            index: +params.index
+        }).next();
+        await mongo.close();
+        if (post) {
+            post.posted = new Date(post.posted).toISOString().split("T")[0];
+            if (!post.special) {
+                post.special = '';
+            }
+            return view.render('post.edit', { post: post });
+        } else {
+            return response.redirect('/post/list');
+        }
+    }
+    async edit({ request, response, auth, session }) {
+        try {
+            await auth.check();
+        } catch (e) {
+            await session.withErrors({ login: 'Login fail' });
+            return response.redirect('back');
+        }
+        const rules = {
+            index: 'required|integer',
+            image: 'required|url',
+            alt: 'required|string',
+            thumb: 'required|url',
+            title: 'required|string',
+            comment: 'required|string',
+            special: 'string',
+            top: 'boolean',
+            posted: 'required|date',
+            keywords: 'required|string',
+            transcript: 'required|string'
+        };
+        const validation = await validate(request.all(), rules);
+        if (validation.fails()) {
+            await session.withErrors(validation.messages()).flashAll();
+            return response.redirect('back');
+        }
+        // update post
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('posts');
+        await collection.updateOne({
+            index: +request.input('index')
+        }, {
+            $set: {
+                image: request.input('image'),
+                thumb: request.input('thumb'),
+                title: request.input('title').trim(),
+                content: request.input('content').trim(),
+                top: !!request.input('top'),
+                posted: Date.parse(request.input('posted')),
+                keywords: request.input('keywords').trim()
+            }
+        });
+        await mongo.close();
+        await session.flash({ post: 'Post edited' });
+        return response.redirect('back');
+    }
 }
 
 module.exports = PostController;
