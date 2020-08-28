@@ -35,3 +35,4 @@ Route.post('/comic/index', 'ComicController.index');
 Route.on('/post/create').render('post.create');
 Route.post('/post/create', 'PostController.create');
 Route.get('/post/list', 'PostController.list');
+Route.post('/post/publish', 'PostController.publish');
