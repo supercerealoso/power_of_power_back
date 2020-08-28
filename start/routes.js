@@ -36,3 +36,5 @@ Route.on('/post/create').render('post.create');
 Route.post('/post/create', 'PostController.create');
 Route.get('/post/list', 'PostController.list');
 Route.post('/post/publish', 'PostController.publish');
+Route.get('/post/edit/:index', 'PostController.show');
+Route.post('/post/edit', 'PostController.edit');
