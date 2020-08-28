@@ -170,15 +170,12 @@ class PostController {
         const rules = {
             index: 'required|integer',
             image: 'required|url',
-            alt: 'required|string',
             thumb: 'required|url',
             title: 'required|string',
-            comment: 'required|string',
-            special: 'string',
+            content: 'required|string',
             top: 'boolean',
             posted: 'required|date',
-            keywords: 'required|string',
-            transcript: 'required|string'
+            keywords: 'required|string'
         };
         const validation = await validate(request.all(), rules);
         if (validation.fails()) {
