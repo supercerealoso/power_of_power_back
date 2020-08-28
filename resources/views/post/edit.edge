@@ -81,7 +81,7 @@
             Content
             {{ elIf('<small class="text-danger">$self</small>', getErrorFor('content'), hasErrorFor('content')) }}
         </label>
-        <textarea class="form-control" name="comment" rows="3">{{ old('content', post.content) }}</textarea>
+        <textarea class="form-control" name="content" rows="3">{{ old('content', post.content) }}</textarea>
     </div>
     <button type="submit" class="btn btn-dark mb-2">Edit</button>
 </form>
