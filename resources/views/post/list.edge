@@ -17,7 +17,7 @@
             <td>{{ post.version }}</th>
             <td>{{ post.index }}</th>
             <td>
-                <a href="https://powerofpower.netlify.app/blogarchive/{{ comic.index }}">{{ post.title }}</a>
+                <a href="https://powerofpower.netlify.app/blogarchive/{{ post.index }}">{{ post.title }}</a>
                 <a class="btn btn-sm btn-dark" href="/post/edit/{{ post.index }}" role="button">Edit</a>
                 <form class="d-inline" method="POST" action="/post/publish">
                     {{ csrfField() }}
