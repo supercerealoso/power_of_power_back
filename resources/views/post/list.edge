@@ -1,0 +1,37 @@
+@layout('layout')
+
+@section('content')
+<p class="lead">List Posts</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Version</th>
+            <th scope="col">Index</th>
+            <th scope="col">Title</th>
+            <th scope="col">Top</th>
+        </tr>
+    </thead>
+    <tbody>
+        @each(post in posts)
+        <tr>
+            <td>{{ post.version }}</th>
+            <td>{{ post.index }}</th>
+            <td>
+                <a href="https://powerofpower.netlify.app/blogarchive/{{ comic.index }}">{{ post.title }}</a>
+                <a class="btn btn-sm btn-dark" href="/post/edit/{{ post.index }}" role="button">Edit</a>
+                <form class="d-inline" method="POST" action="/post/publish">
+                    {{ csrfField() }}
+                    <input type="hidden" name="index" value="{{ post.index }}">
+                    <button type="submit" class="btn btn-sm btn-dark">Publish</button>
+                </form>
+            </td>
+            @if(post.top)
+            <td>✅</td>
+            @else
+            <td></td>
+            @endif
+        </tr>
+        @endeach
+    </tbody>
+</table>
+@endsection

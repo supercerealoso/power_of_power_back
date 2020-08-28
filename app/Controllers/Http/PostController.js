@@ -69,6 +69,22 @@ class PostController {
         await session.flash({ post: 'Post created' });
         return response.redirect('/post/create');
     }
+    async list({ view }) {
+        // get comics
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('posts');
+        const posts = await collection.find({}, {
+            index: 1,
+            title: 1,
+            top: 1,
+            version: 1
+        }).sort({ version: 1, index: -1 }).toArray();
+        await mongo.close();
+        return view.render('post.list', { posts: posts });
+    }
 }
 
 module.exports = PostController;
