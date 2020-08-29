@@ -31,6 +31,7 @@ Route.post('/comic/publish', 'ComicController.publish');
 Route.post('/comic/count', 'ComicController.count');
 Route.post('/comic/archive', 'ComicController.archive');
 Route.post('/comic/index', 'ComicController.index');
+Route.post('/comic/sitemap', 'ComicController.sitemap');
 
 Route.on('/post/create').render('post.create');
 Route.post('/post/create', 'PostController.create');

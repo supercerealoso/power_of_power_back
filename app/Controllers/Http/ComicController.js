@@ -367,7 +367,7 @@ class ComicController {
         await mongo.close();
         return response.redirect('back');
     }
-    async sitemap({ view, auth, session, response }) {
+    async sitemap({ auth, session, response }) {
         try {
             await auth.check();
         } catch (e) {
