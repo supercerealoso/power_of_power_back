@@ -328,7 +328,7 @@ class ComicController {
             thumb: 1
         }).sort({ index: -1 }).toArray();
         const collection2 = mongo.db('powerofpower').collection('posts');
-        const posts = await collection.find({ top: true }, {
+        const posts = await collection2.find({ top: true }, {
             index: 1,
             title: 1,
             thumb: 1
