@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Power of Power - Blog</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/uuR7Utz.png">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss">
+    <link rel="canonical" href="https://powerofpower.net/blog">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msvalidate.01" content="64791B2843C37E5B4A08D38FB20261E1">
+    <meta name="google-site-verification" content="QIcSwGa6HiIdNgkGgM-9KC9f6srJtiAQPeN8aIjV2Hw">
+    <meta name="keywords" content="supercerealoso, powerofpower, power of power, webcomic">
+    <meta name="description" content="There is not enough statistical evidence to reject that this comic is cool.">
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@pwrofpwr">
+    <meta name="twitter:creator" content="@pwrofpwr">
+    <meta name="twitter:title" content="Power of Power - Blog">
+    <meta name="twitter:image:src" content="https://i.imgur.com/iCnOWhm.png">
+    <meta name="twitter:domain" content="https://powerofpower.net">
+    <meta property="fb:app_id" content="1973805279585727">
+    <meta property="og:image" content="https://i.imgur.com/iCnOWhm.png">
+    <meta property="og:title" content="Power of Power - Blog">
+    <meta property="og:url" content="https://powerofpower.net/blog">
+    <meta property="og:site_name" content="Power of Power">
+    <meta property="og:type" content="profile">
+    <meta property="og:description"
+        content="There is not enough statistical evidence to reject that this comic is cool.">
+    <style>
+        .navbar-dark {
+            background-color: #074c97 !important;
+        }
+    </style>
+</head>
+
+<body itemscope itemtype="http://schema.org/ComicStory">
+    <h1 class="d-none">Power of Power - Blog</h1>
+    <nav class="navbar navbar-expand navbar-dark mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img class="img-fluid" src="https://i.imgur.com/6LyZtmJ.png"
+                    alt="Power of Power"></a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/archive">
+                    📁<span class="d-none d-sm-inline">Archive</span>
+                </a>
+                <a class="nav-item nav-link" href="/blog">
+                    📔<span class="d-none d-sm-inline">Blog</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-center">
+        <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
+                    src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
+        @each(post in posts)
+        <a href="/blogarchive/{{ post.index }}"><img class="img-fluid" src="{{ post.thumb }}" alt="{{ post.title }}"
+                title="{{ post.title }}"></a>
+        @endeach
+    </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37190779-1"></script>
+    <script>
+        // google analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-37190779-1');
+    </script>
+</body>
+
+</html>

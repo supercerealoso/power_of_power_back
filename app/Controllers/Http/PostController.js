@@ -205,6 +205,57 @@ class PostController {
         await session.flash({ post: 'Post edited' });
         return response.redirect('back');
     }
+    async archive({ view, auth, session, response }) {
+        try {
+            await auth.check();
+        } catch (e) {
+            await session.withErrors({ login: 'Login fail' });
+            return response.redirect('back');
+        }
+        // get posts
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('posts');
+        const posts = await collection.find({}, {
+            index: 1,
+            title: 1,
+            thumb: 1
+        }).sort({ index: -1 }).toArray();
+        // update the file
+        const meta = mongo.db('powerofpower').collection('meta');
+        const text = view.render('post.archive', { posts: posts });
+        await fs.writeFile('_temp', text, 'utf8');
+        const min = await minify({
+            compressor: htmlMinifier,
+            input: '_temp',
+            output: '_temp',
+            options: {
+                decodeEntities: true,
+                collapseInlineTagWhitespace: false
+            }
+        });
+        const buff = new Buffer(min);
+        const register = await meta.find({
+            name: 'blog'
+        }).next() || {};
+        const file = await octokit.repos.createOrUpdateFileContents({
+            owner: 'supercerealoso',
+            repo: 'power_of_power_front',
+            path: 'blog.html',
+            message: 'automated',
+            content: buff.toString('base64'),
+            sha: register.sha
+        });
+        meta.update(
+            { name: 'blog' },
+            { $set: { sha: file.data.content.sha } },
+            { upsert: true }
+        );
+        await mongo.close();
+        return response.redirect('back');
+    }
 }
 
 module.exports = PostController;

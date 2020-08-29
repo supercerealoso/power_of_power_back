@@ -38,3 +38,4 @@ Route.get('/post/list', 'PostController.list');
 Route.post('/post/publish', 'PostController.publish');
 Route.get('/post/edit/:index', 'PostController.show');
 Route.post('/post/edit', 'PostController.edit');
+Route.post('/post/archive', 'PostController.archive');
