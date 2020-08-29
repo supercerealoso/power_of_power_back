@@ -327,9 +327,15 @@ class ComicController {
             title: 1,
             thumb: 1
         }).sort({ index: -1 }).toArray();
+        const collection2 = mongo.db('powerofpower').collection('posts');
+        const posts = await collection.find({ top: true }, {
+            index: 1,
+            title: 1,
+            thumb: 1
+        }).sort({ index: -1 }).toArray();
         // update the file
         const meta = mongo.db('powerofpower').collection('meta');
-        const text = view.render('comic.index', { comics: comics });
+        const text = view.render('comic.index', { comics: comics, posts:posts });
         await fs.writeFile('_temp', text, 'utf8');
         const min = await minify({
             compressor: htmlMinifier,

@@ -57,10 +57,14 @@
         <p><a href="https://www.redbubble.com/people/supercerealoso/shop"><img class="img-fluid"
                     src="https://i.imgur.com/gH5SsCI.png" alt="Support Power of Power Buying Kewl Stuff"></a></p>
 
-        <p>Popular Comics:</p>
         @each(comic in comics)
         <a href="/comics/{{ comic.index }}"><img class="img-fluid" src="{{ comic.thumb }}" alt="{{ comic.title }}"
                 title="{{ comic.title }}"></a>
+        @endeach
+
+        @each(post in posts)
+        <a href="/blogarchive/{{ post.index }}"><img class="img-fluid" src="{{ post.thumb }}" alt="{{ post.title }}"
+                title="{{ post.title }}"></a>
         @endeach
     </div>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37190779-1"></script>
