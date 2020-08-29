@@ -8,6 +8,7 @@ const MongoClient = use('mongodb').MongoClient;
 const { Octokit } = use("@octokit/rest");
 const minify = use('@node-minify/core');
 const htmlMinifier = use('@node-minify/html-minifier');
+const { SitemapStream, streamToPromise } = use('sitemap');
 
 const octokit = new Octokit({
     auth: Env.get('GITHUB_TOKEN', '')
@@ -335,7 +336,7 @@ class ComicController {
         }).sort({ index: -1 }).toArray();
         // update the file
         const meta = mongo.db('powerofpower').collection('meta');
-        const text = view.render('comic.index', { comics: comics, posts:posts });
+        const text = view.render('comic.index', { comics: comics, posts: posts });
         await fs.writeFile('_temp', text, 'utf8');
         const min = await minify({
             compressor: htmlMinifier,
@@ -360,6 +361,60 @@ class ComicController {
         });
         meta.update(
             { name: 'index' },
+            { $set: { sha: file.data.content.sha } },
+            { upsert: true }
+        );
+        await mongo.close();
+        return response.redirect('back');
+    }
+    async sitemap({ view, auth, session, response }) {
+        try {
+            await auth.check();
+        } catch (e) {
+            await session.withErrors({ login: 'Login fail' });
+            return response.redirect('back');
+        }
+        // get comics
+        const mongo = new MongoClient(Env.get('MONGODB_URL', ''), {
+            useNewUrlParser: true
+        });
+        await mongo.connect();
+        const collection = mongo.db('powerofpower').collection('comics');
+        const comics = await collection.find({}, {
+            index: 1
+        }).sort({ index: -1 }).toArray();
+        const collection2 = mongo.db('powerofpower').collection('posts');
+        const posts = await collection2.find({}, {
+            index: 1
+        }).sort({ index: -1 }).toArray();
+        // url list
+        const links = [{ url: '/' }, { url: '/blog' }, { url: '/archive' }];
+        for (var comic in comics) {
+            links.push('/comics/' + comic.index);
+        }
+        for (var post in posts) {
+            links.push('/blogarchive/' + post.index);
+        }
+        const stream = new SitemapStream({ hostname: 'https://powerofpower.net' });
+        links.forEach(link => stream.write(link));
+        stream.end();
+        const text = await streamToPromise(stream);
+        // update the file
+        const meta = mongo.db('powerofpower').collection('meta');
+        const buff = new Buffer(text);
+        const register = await meta.find({
+            name: 'sitemap'
+        }).next() || {};
+        const file = await octokit.repos.createOrUpdateFileContents({
+            owner: 'supercerealoso',
+            repo: 'power_of_power_front',
+            path: 'sitemap.xml',
+            message: 'automated',
+            content: buff.toString('base64'),
+            sha: register.sha
+        });
+        meta.update(
+            { name: 'sitemap' },
             { $set: { sha: file.data.content.sha } },
             { upsert: true }
         );

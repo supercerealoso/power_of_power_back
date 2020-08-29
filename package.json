@@ -29,6 +29,7 @@
     "@adonisjs/validator": "^5.0.6",
     "pg": "^8.0.2",
     "mongodb": "^3.5.7",
+    "sitemap": "^6.2.0",
     "@octokit/rest": "^17.8.0",
     "@node-minify/core": "*",
     "@node-minify/clean-css": "*",
