@@ -389,12 +389,12 @@ class ComicController {
         }).sort({ index: -1 }).toArray();
         // url list
         const links = [{ url: '/' }, { url: '/blog' }, { url: '/archive' }];
-        for (var comic in comics) {
+        comics.forEach(function (comic) {
             links.push('/comics/' + comic.index);
-        }
-        for (var post in posts) {
+        });
+        posts.forEach(function (post) {
             links.push('/blogarchive/' + post.index);
-        }
+        });
         const stream = new SitemapStream({ hostname: 'https://powerofpower.net' });
         links.forEach(link => stream.write(link));
         stream.end();
